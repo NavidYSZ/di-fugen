@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DI Fugentechnik – Entwurf C „Markentafel"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ffffff; --warm:#f7f5f1; --ink:#1c2024; --muted:#6c727b; --line:#e7e4dd;
+    --accent:#f2b705; --accent-d:#cf9300; --radius:18px;
+    --shadow:0 22px 56px -26px rgba(20,24,29,.30); --shadow-sm:0 10px 26px -16px rgba(20,24,29,.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+  .wrap{width:min(1180px,92%);margin:0 auto}
+  .eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-d)}
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 26px;border-radius:12px;font-weight:700;font-size:.98rem;transition:.25s;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#1a1a1a}.btn-primary:hover{background:var(--accent-d);transform:translateY(-2px)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}.btn-ghost:hover{border-color:var(--ink)}
+
+  .topbar{background:var(--ink);color:#d6dade;font-size:.86rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:40px;gap:16px}
+  .topbar a{color:#fff;font-weight:700}
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:24px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700}
+  .brand .mk{width:40px;height:40px;border-radius:11px;background:linear-gradient(150deg,#ffce3a,#e89c00);display:grid;place-items:center;font-family:'Playfair Display';font-weight:700;color:#1a1a1a}
+  .brand small{display:block;font-size:.72rem;font-weight:500;color:var(--muted)}
+  .menu{display:flex;gap:26px;font-weight:600;font-size:.95rem}.menu a:hover{color:var(--accent-d)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+
+  /* HERO – zentrierte Markentafel */
+  .hero{background:var(--warm);position:relative;overflow:hidden;text-align:center;padding:54px 0 64px}
+  .hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0 46px,rgba(28,32,36,.045) 46px 47px);pointer-events:none}
+  .hero-in{position:relative;max-width:880px;margin:0 auto}
+  .monogram{margin:14px 0 6px}
+  .monogram .di{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(4.6rem,15vw,9rem);line-height:.9;
+    background:linear-gradient(180deg,#3a4047 0%,#1c2024 55%,#43484f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em}
+  .monogram .rule{width:78px;height:4px;background:var(--accent);margin:14px auto 12px;border-radius:3px}
+  .monogram .word{font-family:'Playfair Display',serif;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(.8rem,1.6vw,1.05rem);color:#454b53;padding-left:.42em}
+  .hero h1{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:700;margin:26px auto 14px;max-width:18ch}
+  .hero h1 .hl{color:var(--accent-d)}
+  .hero .sub{color:#454b53;font-size:1.12rem;max-width:620px;margin:0 auto 26px}
+  .hero-cta{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+  .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:9px 15px;border-radius:100px;font-size:.88rem;font-weight:600;box-shadow:var(--shadow-sm)}
+  .pill .st{color:var(--accent)}
+
+  /* Foto-Beleg-Streifen direkt unterm Fold */
+  .proof{border-top:4px solid var(--accent);background:#fff}
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:26px 0}
+  .pf{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .pf img{width:100%;height:200px;object-fit:cover}
+  .pf span{position:absolute;left:12px;bottom:12px;background:rgba(28,32,36,.82);color:#fff;font-size:.78rem;font-weight:700;padding:6px 12px;border-radius:100px}
+
+  section.block{padding:88px 0}
+  .head{text-align:center;max-width:680px;margin:0 auto 48px}
+  .head h2{font-size:clamp(2rem,3.2vw,2.7rem);font-weight:700;margin:12px 0}
+  .head p{color:var(--muted);font-size:1.06rem}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.28s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .card .ic{width:52px;height:52px;border-radius:14px;background:var(--warm);display:grid;place-items:center;color:var(--accent-d);margin-bottom:16px}
+  .card .ic svg{width:25px;height:25px}
+  .card h3{font-size:1.18rem;margin-bottom:8px}.card p{color:var(--muted);font-size:.95rem;margin-bottom:12px}
+  .card a{font-weight:700;color:var(--accent-d);font-size:.9rem}
+
+  .review{background:var(--warm);border-radius:24px;padding:54px 48px;display:grid;grid-template-columns:auto 1fr;gap:42px;align-items:center;border:1px solid var(--line)}
+  .review .score .n{font-family:'Plus Jakarta Sans';font-weight:800;font-size:4rem;line-height:1;color:var(--ink)}
+  .review .score .s{color:var(--accent);font-size:1.3rem;letter-spacing:2px}
+  .review .score .c{color:var(--muted);font-size:.88rem;margin-top:4px}
+  .review q{font-family:'Plus Jakarta Sans';font-weight:600;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.4;display:block}
+  .review .by{color:var(--muted);margin-top:14px}
+
+  .cta-band{background:linear-gradient(120deg,#ffce3a,#e89c00);border-radius:24px;padding:52px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  .cta-band h2{font-size:clamp(1.7rem,2.6vw,2.4rem);font-weight:700;color:#1a1a1a}
+  .cta-band p{color:#5a4400;font-weight:600;margin-top:6px}
+  .cta-band .btn-primary{background:var(--ink);color:#fff}
+
+  footer{background:var(--warm);border-top:1px solid var(--line);color:#4a5159;padding:60px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:42px;padding-bottom:30px;border-bottom:1px solid var(--line)}
+  footer h4{color:var(--ink);font-family:'Plus Jakarta Sans';margin-bottom:13px}footer a:hover{color:var(--accent-d)}
+  footer ul{list-style:none}footer li{margin-bottom:8px}
+  .foot-bottom{padding-top:20px;font-size:.85rem;color:#8b919a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .draft{position:fixed;bottom:16px;left:16px;z-index:99;background:var(--ink);color:#fff;font-size:.78rem;font-weight:800;padding:8px 14px;border-radius:100px}
+
+  @media(max-width:900px){.menu{display:none}.cards,.proof-grid,.review,.foot-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.review{text-align:center}}
+  @media(max-width:560px){.cards,.proof-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="draft">Entwurf C · „Markentafel"</div>
+
+<div class="topbar"><div class="wrap"><span>Fugentechnik &amp; Sanierung · Tornesch · Kreis Pinneberg · Hamburg</span><span><a href="tel:+491629397703">0162 93 97703</a> · <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></span></div></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><span class="mk">DI</span><span><b>DI Fugentechnik</b><small>Fugenmeister · Tornesch</small></span></a>
+    <nav class="menu"><a href="#leistungen">Leistungen</a><a href="#referenzen">Referenzen</a><a href="#kontakt">Kontakt</a></nav>
+    <div class="nav-cta"><a class="btn btn-primary" href="tel:+491629397703">Anrufen</a></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <span class="eyebrow">Fugenmeisterbetrieb · seit Jahren in der Region</span>
+    <div class="monogram">
+      <div class="di">DI</div>
+      <div class="rule"></div>
+      <div class="word">Fugentechnik</div>
+    </div>
+    <h1>Saubere, dichte Fugen für Bad, Küche &amp; <span class="hl">Naturstein</span>.</h1>
+    <p class="sub">Silikon-, PU- &amp; Sanierungsfugen vom zertifizierten Fugenmeister Ibrahim Korkmaz – in Tornesch, im Kreis Pinneberg und in Hamburg.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="tel:+491629397703">Jetzt anrufen · 0162 93 97703</a>
+      <a class="btn btn-ghost" href="#kontakt">Foto senden → Einschätzung</a>
+    </div>
+    <div class="pills">
+      <span class="pill"><span class="st">★</span> 5,0 · 11 Google-Bewertungen</span>
+      <span class="pill">Zertifiziert &amp; geschult</span>
+      <span class="pill">Privat &amp; Gewerbe</span>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="wrap proof-grid">
+    <figure class="pf"><img src="../assets/bilder/referenz-dusche-nische-gruene-fliesen.jpeg" alt="Silikonfugen Dusche" /><span>Silikonfugen Dusche</span></figure>
+    <figure class="pf"><img src="../assets/bilder/referenz-anschlussfuge-nachher.jpeg" alt="Sanierte Fuge" /><span>Fugensanierung</span></figure>
+    <figure class="pf"><img src="../assets/bilder/referenz-naturstein-treppe-travertin.jpeg" alt="Naturstein-Treppe" /><span>Naturstein &amp; Versiegelung</span></figure>
+  </div>
+</div>
+
+<section class="block" id="leistungen">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Leistungen</span><h2>Alles rund um Fugen – aus einer Hand</h2><p>Vom einzelnen Silikonanschluss bis zur gewerblichen Spezialfuge.</p></div>
+    <div class="cards">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><h3>Silikon- &amp; Sanitärfugen</h3><p>Dusche, Wanne, Waschbecken, Küche &amp; Fenster – sauber neu gezogen.</p><a href="/leistungen/silikonfugen-sanitaerfugen/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6l-1 14H6L5 6M10 11v5M14 11v5"/></svg></span><h3>Fugensanierung &amp; Schimmel</h3><p>Rissige oder verschimmelte Fugen fachgerecht erneuern.</p><a href="/leistungen/fugensanierung-schimmelentfernung/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18H20M4 18V8l8-5 8 5v10"/></svg></span><h3>PU- &amp; Dehnungsfugen</h3><p>Elastische Fugen für Fassade, Hochbau und Industrie.</p><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/></svg></span><h3>Naturstein &amp; Versiegelung</h3><p>Granit, Naturstein und Glas materialgerecht versiegelt.</p><a href="/leistungen/naturstein-granit-versiegelung/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11a7 7 0 0 1 14 0zM7 16c0 2-2 3-2 3M12 13c0 4-3 6-3 6M17 16c0 2 2 3 2 3"/></svg></span><h3>Abdichtung Bad &amp; Küche</h3><p>Duschkabinen, Sanitär &amp; Küche zuverlässig wasserdicht.</p><a href="/leistungen/abdichtung-dusche-bad-kueche/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l9-6 9 6v12M3 13h18"/></svg></span><h3>Balkon, Terrasse &amp; Gewerbe</h3><p>Außenfugen, Pools, Großküchen &amp; Fassadenbänder.</p><a href="/leistungen/gewerbe-spezialfugen/">Mehr erfahren →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="referenzen" style="padding-top:0">
+  <div class="wrap">
+    <div class="review">
+      <div class="score"><div class="n">5,0</div><div class="s">★★★★★</div><div class="c">11 Bewertungen bei Google</div></div>
+      <div><q>Gute Arbeit, Zuverlässigkeit und Pünktlichkeit stehen bei uns an erster Stelle – überzeugen Sie sich selbst.</q><div class="by">— Ibrahim Korkmaz, Inhaber &amp; zertifizierter Fugenmeister</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kontakt" style="padding-top:0">
+  <div class="wrap"><div class="cta-band"><div><h2>Fugen erneuern lassen?</h2><p>Schicken Sie ein Foto der betroffenen Stelle – wir melden uns schnell mit einer Einschätzung.</p></div><a class="btn btn-primary" href="tel:+491629397703">0162 93 97703</a></div></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><a class="brand" href="#"><span class="mk">DI</span><span><b>DI Fugentechnik</b><small>Fugentechnik &amp; Sanierung</small></span></a><p style="margin-top:14px;max-width:320px">Meisterhafte Fugentechnik für Privat- und Gewerbekunden – zertifiziert &amp; geschult.</p></div>
+      <div><h4>Kontakt</h4><ul><li>Pastorendamm 15a, 25436 Tornesch</li><li><a href="tel:+491629397703">0162 93 97703</a></li><li><a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></li></ul></div>
+      <div><h4>Leistungen</h4><ul><li><a href="/leistungen/silikonfugen-sanitaerfugen/">Silikonfugen</a></li><li><a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung</a></li><li><a href="/leistungen/naturstein-granit-versiegelung/">Naturstein</a></li><li><a href="/leistungen/gewerbe-spezialfugen/">Gewerbe</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 DI Fugentechnik</span><span>Tornesch · Kreis Pinneberg · Hamburg</span></div>
+  </div>
+</footer>
+</body>
+</html>
