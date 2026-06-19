@@ -1,0 +1,5 @@
+# robots.txt – DI Fugentechnik
+User-agent: *
+Allow: /
+
+Sitemap: https://di-fugen.de/sitemap.xml

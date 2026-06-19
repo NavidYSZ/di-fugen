@@ -1,0 +1,10 @@
+# Lokale Tooling-/IDE-Konfiguration
+.claude/
+.DS_Store
+
+# Interne Agentur-Unterlagen – NICHT auf den öffentlichen Live-Branch
+seo/
+assets/stammdaten/
+
+# Bild mit noch offener Verwendungsfreigabe (Elbphilharmonie) – erst nach Freigabe einbinden
+assets/bilder/referenz-elbphilharmonie-hamburg.jpeg
