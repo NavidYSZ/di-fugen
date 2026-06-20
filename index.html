@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#15181d" />
 <title>DI Fugentechnik | Silikon- &amp; PU-Fugen, Fugensanierung in Tornesch</title>
 <meta name="description" content="DI Fugentechnik aus Tornesch: Silikon- und PU-Fugen, Naturstein-Versiegelung, Abdichtung und Fugensanierung für Bad, Küche, Fenster, Fassade und Gewerbe. Zertifiziert &amp; geschult." />
 <link rel="canonical" href="https://di-fugen.de/" />
@@ -12,242 +13,466 @@
 <meta property="og:url" content="https://di-fugen.de/" />
 <meta property="og:image" content="https://di-fugen.de/assets/bilder/referenz-dusche-nische-gruene-fliesen.jpeg" />
 <meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="DI Fugentechnik" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="DI Fugentechnik | Silikon- &amp; PU-Fugen, Fugensanierung in Tornesch" />
+<meta name="twitter:description" content="DI Fugentechnik aus Tornesch: Silikon- und PU-Fugen, Naturstein-Versiegelung, Abdichtung und Fugensanierung für Bad, Küche, Fenster, Fassade und Gewerbe." />
+<meta name="twitter:image" content="https://di-fugen.de/assets/bilder/referenz-dusche-nische-gruene-fliesen.jpeg" />
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="/assets/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://di-fugen.de/#business", "name": "DI Fugentechnik", "alternateName": "Di Fugen", "url": "https://di-fugen.de/", "telephone": "+491629397703", "email": "di.fugen@gmx.de", "image": "https://di-fugen.de/assets/bilder/fahrzeug-transporter-seite.jpeg", "address": {"@type": "PostalAddress", "streetAddress": "Pastorendamm 15a", "postalCode": "25436", "addressLocality": "Tornesch", "addressRegion": "Schleswig-Holstein", "addressCountry": "DE"}, "founder": {"@type": "Person", "name": "Ibrahim Korkmaz"}, "areaServed": [{"@type": "City", "name": "Tornesch"}, {"@type": "City", "name": "Pinneberg"}, {"@type": "City", "name": "Uetersen"}, {"@type": "City", "name": "Elmshorn"}, {"@type": "City", "name": "Wedel"}, {"@type": "City", "name": "Halstenbek"}, {"@type": "City", "name": "Rellingen"}, {"@type": "City", "name": "Schenefeld"}, {"@type": "City", "name": "Norderstedt"}, {"@type": "City", "name": "Hamburg"}], "priceRange": "€€", "knowsAbout": ["Silikonfugen", "Fugensanierung", "PU-Fugen", "Dehnungsfugen", "Natursteinversiegelung", "Abdichtung"]}</script>
+<style>
+  :root{
+    --ink:#15181d; --bg:#ffffff; --surface:#f7f5f1; --surface2:#fbfaf8; --warm:#f7f5f1;
+    --line:#e8e5df; --muted:#6c727b; --accent:#f2b705; --accent-d:#d99b00;
+    --radius:22px; --shadow:0 22px 60px -24px rgba(20,24,29,.28);
+    --shadow-sm:0 10px 30px -18px rgba(20,24,29,.30);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.logo b{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1180px,92%);margin:0 auto}
+  .skip-link{position:absolute;left:-9999px;top:0}
+  .skip-link:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700}
+  .eyebrow{font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-d)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:15px 26px;border-radius:100px;font-weight:700;font-size:.98rem;line-height:1.15;white-space:nowrap;transition:.25s ease;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#1a1a1a;box-shadow:0 12px 26px -10px rgba(242,183,5,.7)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--accent-d)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* Topbar */
+  .topbar{background:var(--ink);color:#d6dade;font-size:.86rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:40px;gap:16px}
+  .topbar a{color:#fff;font-weight:700}
+
+  /* Header + Dropdown-Navigation */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+  header.scrolled{background:rgba(255,255,255,.9);border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(20,24,29,.5)}
+  .nav{position:relative;display:flex;align-items:center;gap:24px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:700}
+  .logo .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(150deg,#ffce3a,#e89c00);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;color:#1a1a1a;font-size:1.2rem;box-shadow:var(--shadow-sm)}
+  .logo small{display:block;font-size:.74rem;font-weight:500;color:var(--muted);letter-spacing:.02em}
+  .nav-links{flex:1;display:flex;align-items:center;justify-content:center;gap:26px;font-weight:600;font-size:.95rem}
+  .nav-links>a,.has-dropdown>a{color:#3b424b;white-space:nowrap}
+  .nav-links a:hover{color:var(--accent-d)}
+  .has-dropdown{position:relative}
+  .has-dropdown>a::after{content:" ▾";font-size:.8em;color:var(--muted)}
+  .dropdown{display:none;position:absolute;top:100%;left:0;min-width:248px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;margin-top:10px}
+  .has-dropdown:hover .dropdown,.has-dropdown:focus-within .dropdown{display:block}
+  .dropdown a{display:block;padding:10px 14px;border-radius:9px;font-weight:600;color:#3b424b;white-space:nowrap}
+  .dropdown a:hover{background:var(--surface);color:var(--accent-d)}
+  .dropdown a strong{color:var(--ink)}
+  .nav-actions{display:flex;align-items:center;gap:16px;margin-left:auto}
+  .nav-tel{font-weight:700;font-size:.95rem;white-space:nowrap}
+  .nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:46px;height:42px;cursor:pointer;background:none;border:0;padding:0}
+  .nav-burger span,.nav-burger::before,.nav-burger::after{content:"";display:block;width:26px;height:3px;background:var(--ink);border-radius:2px}
+  .nav-burger:focus-visible{outline:2px solid var(--accent-d);outline-offset:3px;border-radius:6px}
+
+  /* HERO – Split-Layout + automatische Foto-Bühne */
+  .hero{background:var(--warm);position:relative;overflow:hidden;padding:48px 0 56px}
+  .hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0 46px,rgba(28,32,36,.045) 46px 47px);pointer-events:none}
+  .hero-grid{position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:48px;align-items:center;text-align:left}
+  .hero-copy .eyebrow{display:inline-block;margin-bottom:14px}
+  .hero h1{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:700;margin:0 0 14px;max-width:16ch}
+  .hero h1 .hl{color:var(--accent-d)}
+  .hero .sub{color:#454b53;font-size:1.12rem;max-width:46ch;margin:0 0 22px}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;justify-content:flex-start;margin-bottom:18px}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:9px 15px;border-radius:100px;font-size:.88rem;font-weight:600;box-shadow:var(--shadow-sm)}
+  .pill .st{color:var(--accent)}
+
+  /* Foto-Bühne (Crossfade) */
+  .stage{position:relative;width:100%;aspect-ratio:4/5;max-height:min(560px,72vh);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow),inset 0 0 0 6px #fff;background:var(--surface)}
+  .stage-accent{position:absolute;top:14px;left:14px;width:34px;height:3px;background:var(--accent);z-index:4;border-radius:3px}
+  .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;z-index:1}
+  .slide.is-active{opacity:1;z-index:2}
+  .stage-scrim{position:absolute;inset:auto 0 0 0;height:52%;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,18,22,.84))}
+  .stage-bar{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:16px 18px}
+  .stage-word{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;letter-spacing:.12em;background:linear-gradient(180deg,#eef1f4,#c3cad2 70%,#eef1f4);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .stage-cap{display:block;color:#fff;font-size:.82rem;font-weight:600;margin-top:2px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+  .stage-nav{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+  .stage-pause{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.85);color:#15181d;font-size:.7rem;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .stage-pause:hover{background:#fff}
+  .stage-pause:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .stage-dots{display:flex;gap:8px;flex:0 0 auto}
+  .dot{position:relative;width:9px;height:9px;padding:0;border:none;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;box-shadow:0 0 0 1px rgba(0,0,0,.2);transition:width .25s ease,background .25s ease}
+  .dot.is-active{background:var(--accent);width:22px;border-radius:5px}
+  .dot:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .dot::after{content:"";position:absolute;inset:-16px}
+
+  /* Trust strip */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface2)}
+  .trust-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding:26px 0}
+  .trust-item{display:flex;align-items:center;gap:12px;font-weight:600;color:#3b424b;font-size:.96rem}
+  .trust-item .ic{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent-d)}
+  .trust-item .ic svg{width:20px;height:20px}
+
+  section.block{padding:92px 0}
+  .head{max-width:680px;margin:0 auto 54px;text-align:center}
+  .head h2{font-size:clamp(2rem,3.2vw,2.8rem);font-weight:700;margin:12px 0}
+  .head p{color:var(--muted);font-size:1.08rem}
+
+  /* Services */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:.28s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .card .ic{width:54px;height:54px;border-radius:15px;background:var(--surface);display:grid;place-items:center;color:var(--accent-d);margin-bottom:18px}
+  .card .ic svg{width:26px;height:26px}
+  .card h3{font-size:1.22rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
+  .card a{font-weight:700;color:var(--accent-d);font-size:.92rem}
+
+  /* Why */
+  .why{background:var(--surface)}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .why-media{position:relative}
+  .why-media img{width:100%;height:520px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .why h2{font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;margin:12px 0 16px}
+  .why .lead{color:#454b54;margin-bottom:26px}
+  .checks{display:grid;gap:18px;margin-bottom:30px}
+  .check{display:flex;gap:14px}
+  .check .tick{flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:#1a1a1a;font-weight:900;margin-top:2px}
+  .check b{display:block}.check span{color:var(--muted);font-size:.95rem}
+
+  /* Before/After */
+  .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ba{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .ba img{width:100%;height:430px;object-fit:cover}
+  .ba .tag{position:absolute;top:16px;left:16px;background:rgba(21,24,29,.82);color:#fff;padding:7px 15px;border-radius:100px;font-weight:700;font-size:.82rem;letter-spacing:.04em}
+  .ba.after .tag{background:var(--accent);color:#1a1a1a}
+
+  /* Reviews / CTA */
+  .review{background:var(--ink);color:#fff;border-radius:28px;padding:64px 56px;display:grid;grid-template-columns:auto 1fr;gap:46px;align-items:center}
+  .review .score{text-align:center}
+  .review .score .n{font-family:'Plus Jakarta Sans';font-weight:800;font-size:4.4rem;line-height:1}
+  .review .score .s{color:var(--accent);font-size:1.4rem;letter-spacing:2px}
+  .review .score .c{color:#aeb4bd;font-size:.9rem;margin-top:6px}
+  .review q{font-family:'Plus Jakarta Sans';font-weight:600;font-size:clamp(1.3rem,2.2vw,1.9rem);display:block;line-height:1.35}
+  .review .by{color:#aeb4bd;margin-top:18px}
+
+  .cta-band{background:linear-gradient(120deg,#ffce3a,#e89c00);border-radius:28px;padding:56px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .cta-band h2{font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:700;color:#1a1a1a}
+  .cta-band p{color:#4a3700;font-weight:600;margin-top:6px}
+  .cta-band .btn-primary{background:#15181d;color:#fff;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+
+  footer{background:var(--ink);color:#c7ccd3;padding:64px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:44px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12)}
+  footer h3,footer h4{color:#fff;font-family:'Plus Jakarta Sans';margin-bottom:14px}
+  footer h3{font-size:1.15rem}footer h4{font-size:1.05rem}
+  footer a{color:#c7ccd3}footer a:hover{color:var(--accent)}
+  footer ul{list-style:none}footer li{margin-bottom:9px}
+  .foot-bottom{padding-top:22px;font-size:.86rem;color:#8b919a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* Mobile Sticky-Call-Bar */
+  .call-bar{display:none}
+
+  @media(max-width:900px){
+    .why-grid,.ba-grid,.review,.foot-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}
+    .nav{gap:14px}
+    .nav-tel{display:none}
+    .nav-burger{display:inline-flex}
+    .nav-links{flex:none;display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:6px 0;font-size:1rem}
+    .nav-links>a,.has-dropdown>a{display:block;padding:13px 5%;width:100%;color:var(--ink)}
+    .has-dropdown{width:100%}
+    .has-dropdown>a::after{content:""}
+    .dropdown{display:block;position:static;border:0;box-shadow:none;border-radius:0;padding:0 0 8px;margin:0;min-width:0;background:var(--surface)}
+    .dropdown a{padding:9px 8%}
+    .nav-links.is-open{display:flex}
+    .nav-actions .btn{padding:11px 18px;font-size:.92rem}
+    .why-media img{height:380px}
+    .review{padding:40px 28px;text-align:center}.review .score .n{font-size:3.4rem}
+    .topbar .wrap span:first-child{display:none}
+    .topbar .wrap{justify-content:center}
+  }
+  /* Hero mobil: gestapelt, Foto-Bühne zuerst, CTAs above the fold */
+  @media(max-width:760px){
+    .topbar{display:none}
+    .hero{padding:16px 0 22px}
+    .hero-grid{grid-template-columns:1fr;gap:12px}
+    .stage{order:-1;aspect-ratio:16/11;max-height:30vh;box-shadow:var(--shadow),inset 0 0 0 4px #fff}
+    .hero h1{font-size:clamp(1.5rem,6vw,1.9rem);max-width:none;margin-bottom:10px}
+    .hero .sub{font-size:1rem;max-width:none;margin-bottom:14px}
+    .hero-cta{flex-direction:column;gap:10px;margin-bottom:14px}
+    .hero-cta .btn{width:100%}
+    .pill-extra{display:none}
+    section.block{padding:60px 0}
+    .head{margin-bottom:36px}
+    .cta-band{padding:36px 26px}
+    body{padding-bottom:56px}
+    .call-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -6px 20px -8px rgba(0,0,0,.25)}
+    .call-bar a{padding:15px 8px;text-align:center;font-weight:800;color:#1a1a1a}
+    .call-bar .cb-call{background:var(--accent)}
+    .call-bar .cb-wa{background:#25D366;color:#fff}
+  }
+  @media(max-width:560px){
+    .cards{grid-template-columns:1fr}
+    .nav{padding:12px 0;gap:12px}
+    .logo small{display:none}
+    .logo .mark{width:40px;height:40px;font-size:1.05rem}
+    .logo b{font-size:1rem}
+    .nav-actions .btn{display:none}
+  }
+  @media(max-height:640px) and (max-width:760px){ .stage{max-height:26vh} }
+  /* Querformat-Phones (kurze Höhe): Hero stapeln, Topbar aus */
+  @media(max-height:560px) and (max-width:940px){
+    .topbar{display:none}
+    .hero{padding:14px 0 18px}
+    .hero-grid{grid-template-columns:1fr;gap:12px}
+    .stage{order:-1;aspect-ratio:16/9;max-height:46vh}
+    .hero h1{font-size:1.5rem;max-width:none;margin-bottom:8px}
+    .hero .sub{font-size:.98rem;max-width:none;margin-bottom:12px}
+    .pill-extra{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .slide,.dot,.btn-primary{transition:none}
+    .btn-primary:hover{transform:none}
+    .stage-pause{display:none}
+  }
+</style>
 </head>
 <body>
-<div class="topbar"><div class="container topbar-inner"><div>Fugentechnik &amp; Fugensanierung · Tornesch und Umgebung</div><div><a href="tel:+491629397703">0162 93 97703</a> · <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></div></div></div>
-<header><div class="container nav"><a href="/" class="logo" aria-label="DI Fugentechnik Startseite"><span class="logo-mark">DI</span><span>DI Fugentechnik <small>Fugentechnik &amp; Sanierung</small></span></a><input type="checkbox" id="navtoggle" class="nav-toggle" /><label for="navtoggle" class="nav-burger" aria-label="Menü öffnen"><span></span></label><nav class="nav-links" aria-label="Hauptnavigation"><div class="has-dropdown"><a href="/leistungen/">Leistungen</a><div class="dropdown"><a href="/leistungen/"><strong>Leistungen – Übersicht</strong></a><a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a><a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a><a href="/leistungen/naturstein-granit-versiegelung/">Naturstein &amp; Versiegelung</a><a href="/leistungen/abdichtung-dusche-bad-kueche/">Abdichtung Bad &amp; Küche</a><a href="/leistungen/balkon-terrassenfugen/">Balkon &amp; Terrasse</a><a href="/leistungen/gewerbe-spezialfugen/">Gewerbe- &amp; Spezialfugen</a></div></div><div class="has-dropdown"><a href="/einzugsgebiet/">Einzugsgebiet</a><div class="dropdown"><a href="/einzugsgebiet/"><strong>Einzugsgebiet – Übersicht</strong></a><a href="/einzugsgebiet/tornesch-kreis-pinneberg/">Tornesch &amp; Kreis Pinneberg</a><a href="/einzugsgebiet/hamburg/">Hamburg</a></div></div><a href="/referenzen/">Referenzen</a><a href="/ratgeber/">Ratgeber</a><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a></nav><a class="btn nav-call" href="tel:+491629397703">Anrufen</a></div></header>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<main>
+<div class="topbar"><div class="wrap"><span>Fugentechnik &amp; Sanierung · Tornesch · Kreis Pinneberg · Hamburg</span><span><a href="tel:+491629397703">0162 93 97703</a> · <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></span></div></div>
 
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-label">Fugenarbeiten vom Fachbetrieb</div>
-          <h1>Neue Fugen für Bad, Küche und Fenster.</h1>
-          <p>Wir erneuern Silikonfugen, sanieren alte Fugen und sorgen für saubere, dichte Anschlüsse. Zuverlässig, ordentlich und mit klarer Absprache vor Beginn.</p>
-
-          <div class="hero-actions">
-            <a href="tel:+491629397703" class="btn">Jetzt Angebot anfragen</a>
-            <a href="/leistungen/" class="btn btn-outline">Leistungen ansehen</a>
-          </div>
-
-          <div class="hero-points">
-            <div class="hero-point"><span>✓</span>Zertifizierter Fugenmeister</div>
-            <div class="hero-point"><span>✓</span>5,0 ★ bei Google</div>
-            <div class="hero-point"><span>✓</span>Für Privat & Gewerbe</div>
-          </div>
-        </div>
-
-        <div class="quote-box">
-          <h2>Kurze Anfrage senden</h2>
-          <p>Beschreiben Sie kurz den Bereich. Wir melden uns mit einer ersten Einschätzung zurück.</p>
-          <form>
-            <div class="form-row">
-              <input type="text" placeholder="Ihr Name" aria-label="Ihr Name" />
-              <input type="tel" placeholder="Telefonnummer" aria-label="Telefonnummer" />
-              <select aria-label="Leistung auswählen">
-                <option>Welche Leistung benötigen Sie?</option>
-                <option>Silikonfugen erneuern</option>
-                <option>Fugensanierung</option>
-                <option>Dehnungsfugen</option>
-              </select>
-              <textarea placeholder="Kurze Beschreibung, z. B. Bad, Dusche oder Küche" aria-label="Beschreibung"></textarea>
-            </div>
-            <button class="btn" type="submit">Anfrage abschicken</button>
-          </form>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="/" aria-label="DI Fugentechnik Startseite"><span class="mark">DI</span><span><b>DI Fugentechnik</b><small>Fugentechnik &amp; Sanierung</small></span></a>
+    <nav class="nav-links" id="navlinks" aria-label="Hauptnavigation">
+      <div class="has-dropdown">
+        <a href="/leistungen/">Leistungen</a>
+        <div class="dropdown">
+          <a href="/leistungen/"><strong>Leistungen – Übersicht</strong></a>
+          <a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a>
+          <a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a>
+          <a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a>
+          <a href="/leistungen/naturstein-granit-versiegelung/">Naturstein &amp; Versiegelung</a>
+          <a href="/leistungen/abdichtung-dusche-bad-kueche/">Abdichtung Bad &amp; Küche</a>
+          <a href="/leistungen/balkon-terrassenfugen/">Balkon &amp; Terrasse</a>
+          <a href="/leistungen/gewerbe-spezialfugen/">Gewerbe- &amp; Spezialfugen</a>
         </div>
       </div>
-    </section>
+      <div class="has-dropdown">
+        <a href="/einzugsgebiet/">Einzugsgebiet</a>
+        <div class="dropdown">
+          <a href="/einzugsgebiet/"><strong>Einzugsgebiet – Übersicht</strong></a>
+          <a href="/einzugsgebiet/tornesch-kreis-pinneberg/">Tornesch &amp; Kreis Pinneberg</a>
+          <a href="/einzugsgebiet/hamburg/">Hamburg</a>
+        </div>
+      </div>
+      <a href="/referenzen/">Referenzen</a>
+      <a href="/ratgeber/">Ratgeber</a>
+      <a href="/ueber-uns/">Über uns</a>
+      <a href="/kontakt/">Kontakt</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-tel" href="tel:+491629397703">0162 93 97703</a>
+      <a class="btn btn-primary" href="tel:+491629397703">Angebot anfragen</a>
+      <button type="button" class="nav-burger" id="navtoggle" aria-controls="navlinks" aria-expanded="false" aria-label="Menü öffnen"><span></span></button>
+    </div>
+  </div>
+</header>
 
-    <div class="benefits">
-      <div class="container benefit-grid">
-        <div class="benefit">
-          <div class="benefit-icon">1</div>
-          <div><strong>Schnelle Einschätzung</strong><span>Oft reicht ein Foto für die erste Beurteilung.</span></div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">2</div>
-          <div><strong>Saubere Ausführung</strong><span>Alte Fugen werden ordentlich entfernt.</span></div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">3</div>
-          <div><strong>Passendes Material</strong><span>Je nach Bereich Silikon, Acryl oder Spezialfuge.</span></div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">4</div>
-          <div><strong>Faire Angebote</strong><span>Klare Preise und transparente Absprachen.</span></div>
-        </div>
+<main id="main">
+<!-- ABOVE THE FOLD: Split-Hero – Text/CTAs links, automatische Foto-Bühne rechts -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Fugenmeisterbetrieb · seit Jahren in der Region</span>
+      <h1>Saubere, dichte Fugen für Bad, Küche &amp; <span class="hl">Naturstein</span>.</h1>
+      <p class="sub">Silikon-, PU- &amp; Sanierungsfugen vom zertifizierten Fugenmeister Ibrahim Korkmaz – in Tornesch, im Kreis Pinneberg und in Hamburg.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+491629397703">Jetzt anrufen · 0162 93 97703</a>
+        <a class="btn btn-ghost" href="/kontakt/">Foto senden → Einschätzung</a>
+      </div>
+      <div class="pills">
+        <span class="pill"><span class="st">★</span> 5,0 · 11 Google-Bewertungen</span>
+        <span class="pill pill-extra">Zertifiziert &amp; geschult</span>
+        <span class="pill pill-extra">Privat &amp; Gewerbe</span>
       </div>
     </div>
 
-    <section id="leistungen">
-      <div class="container">
-        <div class="section-title">
-          <div class="overline">Unsere Leistungen</div>
-          <h2>Fugenarbeiten für Renovierung, Neubau und Reparatur</h2>
-          <p>Ob einzelne Silikonfuge in der Dusche oder komplette Fugensanierung: Wir übernehmen Fugenarbeiten in privaten und gewerblichen Bereichen.</p>
+    <div class="stage" role="group" aria-roledescription="Bildergalerie" aria-label="Referenzfotos – automatischer Wechsel">
+      <span class="stage-accent" aria-hidden="true"></span>
+      <img class="slide is-active" src="/assets/bilder/referenz-dusche-nische-gruene-fliesen.jpeg"
+           alt="Saubere Silikonfuge an Duschnische mit grünen Glasfliesen"
+           style="object-position:center 42%" width="739" height="1022"
+           loading="eager" fetchpriority="high" data-cap="Bad · grüne Glasfliesen, Nische" />
+      <img class="slide" src="/assets/bilder/referenz-naturstein-treppe-travertin.jpeg"
+           alt="Verfugte Naturstein-Treppe aus Travertin"
+           style="object-position:center 38%" width="739" height="958"
+           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Naturstein · Travertin-Treppe" />
+      <img class="slide" src="/assets/bilder/referenz-bad-anthrazit-nische.jpeg"
+           alt="Modernes anthrazitfarbenes Bad mit präziser Nischenfuge"
+           style="object-position:center 30%" width="1200" height="1600"
+           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Bad · anthrazit, Wandnische" />
+      <img class="slide" src="/assets/bilder/referenz-gewerbe-restaurant-hafenblick.jpeg"
+           alt="Gewerbe-Referenz: Restaurant mit Hafenblick"
+           style="object-position:center center" width="1600" height="1200"
+           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Gewerbe · Restaurant, Hafenblick" />
+      <div class="stage-scrim" aria-hidden="true"></div>
+      <div class="stage-bar">
+        <div class="stage-brand">
+          <span class="stage-word">DI Fugentechnik</span>
+          <span class="stage-cap" id="stageCap" aria-live="polite" aria-atomic="true">Bad · grüne Glasfliesen, Nische</span>
         </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <img src="/assets/bilder/referenz-bad-badewanne-silikonfuge.jpeg" alt="Modernes Badezimmer mit Dusche" />
-            <div class="service-content">
-              <h3>Silikonfugen erneuern</h3>
-              <p>Für Dusche, Badewanne, Waschbecken, Küchenarbeitsplatte und Fensteranschlüsse.</p>
-              <a href="/leistungen/silikonfugen-sanitaerfugen/" class="text-link">Mehr erfahren →</a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img src="/assets/bilder/referenz-anschlussfuge-nachher.jpeg" alt="Gefliestes Badezimmer" />
-            <div class="service-content">
-              <h3>Fugensanierung</h3>
-              <p>Rissige, verfärbte oder beschädigte Fugen werden entfernt und fachgerecht erneuert.</p>
-              <a href="/leistungen/fugensanierung-schimmelentfernung/" class="text-link">Mehr erfahren →</a>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img src="/assets/bilder/referenz-sockelfuge-boden.jpeg" alt="Küche mit Fliesen und Arbeitsplatte" />
-            <div class="service-content">
-              <h3>Acryl- & Anschlussfugen</h3>
-              <p>Saubere Abschlüsse an Wänden, Sockeln, Türen, Fenstern und Trockenbauflächen.</p>
-              <a href="/leistungen/elastische-fugen-pu-dehnungsfugen/" class="text-link">Mehr erfahren →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="ueber-uns" class="about">
-      <div class="container about-grid">
-        <div class="about-image">
-          <img src="/assets/bilder/referenz-bad-anthrazit-nische.jpeg" alt="Handwerker bei Renovierungsarbeiten" />
-          <div class="experience-box">
-            <strong>Sauber</strong>
-            <span>geplant & ausgeführt</span>
-          </div>
-        </div>
-
-        <div class="about-content">
-          <div class="overline">Warum DI Fugentechnik?</div>
-          <h2>Fugen sind klein, aber entscheidend für Optik und Schutz.</h2>
-          <p>Undichte oder beschädigte Fugen können Feuchtigkeit eindringen lassen und sehen schnell ungepflegt aus. Wir achten auf saubere Vorbereitung, passende Materialien und ein gleichmäßiges Fugenbild.</p>
-          <p>Vor Beginn besprechen wir den Bereich, den Zustand der bestehenden Fugen und die passende Lösung. So wissen Sie genau, was gemacht wird.</p>
-
-          <div class="check-list">
-            <div class="check-item"><span>✓</span><div><strong>Zertifiziert &amp; geschult</strong><br />Fugenmeister mit OTTO-Profi-Schulung „Professionelles Verfugen".</div></div>
-            <div class="check-item"><span>✓</span><div><strong>Keine reine Kosmetik</strong><br />Alte Fugen werden nicht einfach überarbeitet, sondern sauber vorbereitet.</div></div>
-            <div class="check-item"><span>✓</span><div><strong>Ordentliche Baustelle</strong><br />Wir arbeiten sauber und schützen angrenzende Bereiche.</div></div>
-            <div class="check-item"><span>✓</span><div><strong>Klare Kommunikation</strong><br />Sie erhalten eine verständliche Einschätzung und faire Absprache.</div></div>
-          </div>
-
-          <a href="tel:+491629397703" class="btn">Projekt besprechen</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ablauf">
-      <div class="container">
-        <div class="section-title">
-          <div class="overline">Ablauf</div>
-          <h2>So läuft eine Fugensanierung ab</h2>
-          <p>Der Ablauf ist unkompliziert. Für eine erste Einschätzung können Sie uns Fotos per E-Mail oder Nachricht senden.</p>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-card">
-            <div class="process-number">01</div>
-            <h3>Anfrage senden</h3>
-            <p>Sie melden sich telefonisch oder senden uns Bilder vom betroffenen Bereich.</p>
-          </article>
-          <article class="process-card">
-            <div class="process-number">02</div>
-            <h3>Einschätzung</h3>
-            <p>Wir prüfen Aufwand, Material und ob ein Vor-Ort-Termin notwendig ist.</p>
-          </article>
-          <article class="process-card">
-            <div class="process-number">03</div>
-            <h3>Angebot</h3>
-            <p>Sie erhalten ein klares Angebot mit Umfang, Preis und möglichem Termin.</p>
-          </article>
-          <article class="process-card">
-            <div class="process-number">04</div>
-            <h3>Ausführung</h3>
-            <p>Wir entfernen alte Fugen und erstellen neue, saubere und dichte Abschlüsse.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="dark-section">
-      <div class="container dark-grid">
-        <div>
-          <div class="hero-label">Einsatzbereiche</div>
-          <h2>Von der Dusche bis zur Fassade und ins Gewerbe</h2>
-          <p>Wir übernehmen Fugen- und Abdichtungsarbeiten im ganzen Haus – in Bädern und Küchen, an Naturstein und Glas, an der Fassade sowie in gewerblichen und industriellen Objekten.</p>
-
-          <div class="areas-list">
-            <div class="area-item">Bad & Dusche</div>
-            <div class="area-item">Küche & Großküche</div>
-            <div class="area-item">Fenster & Türen</div>
-            <div class="area-item">Naturstein & Granit</div>
-            <div class="area-item">Fassade & Dehnungsfugen</div>
-            <div class="area-item">Pool & Terrasse</div>
-            <div class="area-item">Gewerbe & Industrie</div>
-            <div class="area-item">Schwimmbäder</div>
-          </div>
-        </div>
-
-        <div class="dark-image">
-          <img src="/assets/bilder/referenz-gewerbe-lobby.jpeg" alt="Fugenarbeiten in einem gewerblichen Objekt" />
-        </div>
-      </div>
-    </section>
-
-    <section id="fragen">
-      <div class="container">
-        <div class="section-title">
-          <div class="overline">Häufige Fragen</div>
-          <h2>Fragen zu Fugenarbeiten</h2>
-          <p>Hier finden Sie kurze Antworten auf typische Fragen vor einer Fugensanierung.</p>
-        </div>
-
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h3>Wann sollten Silikonfugen erneuert werden?</h3>
-            <p>Wenn sie rissig, verfärbt, undicht oder teilweise abgelöst sind. Besonders im Nassbereich sollte man nicht zu lange warten.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Kann man neue Fugen einfach über alte setzen?</h3>
-            <p>In der Regel nicht. Für ein sauberes Ergebnis müssen alte Fugen entfernt und der Untergrund vorbereitet werden.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Reicht ein Foto für ein Angebot?</h3>
-            <p>Oft reicht es für eine erste Einschätzung. Bei größeren Flächen oder unklarem Zustand empfehlen wir einen Vor-Ort-Termin.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Arbeiten Sie auch in Mietwohnungen?</h3>
-            <p>Ja, wir übernehmen Fugenarbeiten für Eigentümer, Mieter, Hausverwaltungen und gewerbliche Auftraggeber.</p>
+        <div class="stage-nav">
+          <button class="stage-pause" type="button" aria-label="Diashow pausieren" aria-pressed="false">❚❚</button>
+          <div class="stage-dots" aria-label="Foto auswählen">
+            <button class="dot is-active" type="button" aria-label="Foto 1 von 4 anzeigen"></button>
+            <button class="dot" type="button" aria-label="Foto 2 von 4 anzeigen"></button>
+            <button class="dot" type="button" aria-label="Foto 3 von 4 anzeigen"></button>
+            <button class="dot" type="button" aria-label="Foto 4 von 4 anzeigen"></button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="final-cta">
-      <div class="container final-cta-inner">
-        <div>
-          <h2>Fugen erneuern lassen?</h2>
-          <p>Rufen Sie uns an oder senden Sie uns Fotos vom betroffenen Bereich. Wir melden uns schnell mit einer Einschätzung.</p>
-        </div>
-        <a href="tel:+491629397703" class="btn">0162 93 97703</a>
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Meisterhafte Ausführung</div>
+    <div class="trust-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Termine nach Absprache</div>
+    <div class="trust-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span>Faire, klare Angebote</div>
+    <div class="trust-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 13l4 4L19 7"/></svg></span>Schadenfreie, saubere Baustelle</div>
+  </div>
+</div>
+
+<section class="block" id="leistungen">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Unsere Leistungen</span><h2>Alles rund um Fugen – aus einer Hand</h2><p>Vom einzelnen Silikon­anschluss bis zur kompletten Sanierung und gewerblichen Spezialfuge.</p></div>
+    <div class="cards">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><h3>Silikon- &amp; Sanitärfugen</h3><p>Dusche, Wanne, Waschbecken, Küche und Fenster – sauber entfernt und neu gezogen.</p><a href="/leistungen/silikonfugen-sanitaerfugen/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M3 6h18M19 6l-1 14H6L5 6M10 11v5M14 11v5"/></svg></span><h3>Fugensanierung &amp; Schimmel</h3><p>Rissige oder verschimmelte Fugen fachgerecht erneuern – dauerhaft dicht.</p><a href="/leistungen/fugensanierung-schimmelentfernung/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 18 L20 18 M4 18 V8 l8-5 8 5 v10"/></svg></span><h3>PU- &amp; Dehnungsfugen</h3><p>Elastische Fugen für Fassade, Hochbau und Industrie – besonders belastbar.</p><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/></svg></span><h3>Naturstein &amp; Versiegelung</h3><p>Granit, Naturstein und Glas – materialgerecht verfugt und versiegelt.</p><a href="/leistungen/naturstein-granit-versiegelung/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M7 16c0 2-2 3-2 3M12 13c0 4-3 6-3 6M17 16c0 2 2 3 2 3M5 11a7 7 0 0 1 14 0z"/></svg></span><h3>Abdichtung Bad &amp; Küche</h3><p>Duschkabinen, Sanitärobjekte und Küchen­anschlüsse zuverlässig wasserdicht.</p><a href="/leistungen/abdichtung-dusche-bad-kueche/">Mehr erfahren →</a></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M3 21V9l9-6 9 6v12M3 13h18"/></svg></span><h3>Balkon, Terrasse &amp; Gewerbe</h3><p>Außenfugen, Pools, Großküchen, Reinraum- und Fassadenfugen.</p><a href="/leistungen/gewerbe-spezialfugen/">Mehr erfahren →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="block why" id="warum">
+  <div class="wrap why-grid">
+    <div class="why-media"><img src="/assets/bilder/referenz-bad-badewanne-silikonfuge.jpeg" alt="Saubere Silikonfuge entlang einer Badewanne" /></div>
+    <div>
+      <span class="eyebrow">Warum DI Fugentechnik?</span>
+      <h2>Fugen sind klein – aber entscheidend für Optik und Schutz.</h2>
+      <p class="lead">Undichte Fugen lassen Feuchtigkeit eindringen und sehen schnell ungepflegt aus. Wir achten auf saubere Vorbereitung, das passende Material und ein gleichmäßiges Fugenbild.</p>
+      <div class="checks">
+        <div class="check"><span class="tick">✓</span><div><b>Zertifiziert &amp; geschult</b><span>Fugenmeister mit Schulung „Professionelles Verfugen".</span></div></div>
+        <div class="check"><span class="tick">✓</span><div><b>Keine reine Kosmetik</b><span>Alte Fugen werden entfernt und der Untergrund sauber vorbereitet.</span></div></div>
+        <div class="check"><span class="tick">✓</span><div><b>Klare Kommunikation</b><span>Verständliche Einschätzung und faire Absprache vor Beginn.</span></div></div>
       </div>
-    </section>
-  </main>
-<footer><div class="container footer-grid"><div><h3>DI Fugentechnik</h3><p>Meisterhafte Fugentechnik: Silikon- und PU-Fugen, Naturstein, Abdichtung und Fugensanierung für Privat- und Gewerbekunden – zertifiziert &amp; geschult.</p></div><div><h4>Kontakt</h4><ul><li>DI Fugentechnik – Ibrahim Korkmaz</li><li>Pastorendamm 15a<br />25436 Tornesch</li><li>Telefon: <a href="tel:+491629397703">0162 93 97703</a></li><li>E-Mail: <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></li><li>Termine nach Absprache</li></ul></div><div><h4>Seiten</h4><ul><li><a href="/leistungen/">Leistungen</a></li><li><a href="/einzugsgebiet/">Einzugsgebiet</a></li><li><a href="/referenzen/">Referenzen</a></li><li><a href="/ratgeber/">Ratgeber</a></li><li><a href="/ueber-uns/">Über uns</a></li><li><a href="/bewertungen/">Bewertungen</a></li><li><a href="/kontakt/">Kontakt</a></li></ul></div></div><div class="container footer-bottom"><div>© 2026 DI Fugentechnik. Alle Rechte vorbehalten.</div><div><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></div></div></footer>
+      <a class="btn btn-primary" href="tel:+491629397703">Projekt besprechen</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="referenzen">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Vorher / Nachher</span><h2>Der Unterschied, den saubere Arbeit macht</h2></div>
+    <div class="ba-grid">
+      <figure class="ba"><span class="tag">Vorher</span><img src="/assets/bilder/referenz-anschlussfuge-vorher.jpeg" alt="Schadhafte Fuge vorher" /></figure>
+      <figure class="ba after"><span class="tag">Nachher</span><img src="/assets/bilder/referenz-anschlussfuge-nachher.jpeg" alt="Sauber sanierte Fuge nachher" /></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="review">
+      <div class="score"><div class="n">5,0</div><div class="s">★★★★★</div><div class="c">11 Bewertungen bei Google</div></div>
+      <div><q>Wir sind ein innovatives Team. Gute Arbeit, Zuverlässigkeit und Pünktlichkeit stehen bei uns an erster Stelle – überzeugen Sie sich selbst.</q><div class="by">— Ibrahim Korkmaz, Inhaber &amp; Fugenmeister</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kontakt" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Fugen erneuern lassen?</h2><p>Schicken Sie uns ein Foto der betroffenen Stelle – wir melden uns schnell mit einer Einschätzung.</p></div>
+      <a class="btn btn-primary" href="tel:+491629397703">0162 93 97703</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h3>DI Fugentechnik</h3><p style="max-width:340px">Meisterhafte Fugentechnik: Silikon- und PU-Fugen, Naturstein, Abdichtung und Fugensanierung für Privat- und Gewerbekunden – zertifiziert &amp; geschult.</p></div>
+      <div><h4>Kontakt</h4><ul><li>DI Fugentechnik – Ibrahim Korkmaz</li><li>Pastorendamm 15a<br />25436 Tornesch</li><li>Telefon: <a href="tel:+491629397703">0162 93 97703</a></li><li>E-Mail: <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></li><li>Termine nach Absprache</li></ul></div>
+      <nav aria-label="Footer"><h4>Seiten</h4><ul><li><a href="/leistungen/">Leistungen</a></li><li><a href="/einzugsgebiet/">Einzugsgebiet</a></li><li><a href="/referenzen/">Referenzen</a></li><li><a href="/ratgeber/">Ratgeber</a></li><li><a href="/ueber-uns/">Über uns</a></li><li><a href="/bewertungen/">Bewertungen</a></li><li><a href="/kontakt/">Kontakt</a></li></ul></nav>
+    </div>
+    <div class="foot-bottom"><div>© 2026 DI Fugentechnik. Alle Rechte vorbehalten.</div><div><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></div></div>
+  </div>
+</footer>
+
 <div class="call-bar"><a class="cb-call" href="tel:+491629397703">Anrufen</a><a class="cb-wa" href="https://wa.me/491629397703" target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script>
+  const h=document.getElementById('hdr');
+  const onScroll=()=>h.classList.toggle('scrolled',window.scrollY>10);
+  onScroll();addEventListener('scroll',onScroll,{passive:true});
+
+  /* Mobiles Menü (zugänglicher Button mit aria-expanded) */
+  (function(){
+    const burger=document.getElementById('navtoggle');
+    const links=document.getElementById('navlinks');
+    if(!burger||!links) return;
+    const setMenu=open=>{ links.classList.toggle('is-open',open); burger.setAttribute('aria-expanded',open?'true':'false'); };
+    burger.addEventListener('click',()=>setMenu(!links.classList.contains('is-open')));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
+  })();
+
+  /* Hero-Foto-Bühne: automatischer Crossfade + Pause-Steuerung */
+  (function(){
+    const stage=document.querySelector('.stage');
+    if(!stage) return;
+    const slides=[...stage.querySelectorAll('.slide')];
+    const dots=[...stage.querySelectorAll('.dot')];
+    const cap=document.getElementById('stageCap');
+    const pauseBtn=stage.querySelector('.stage-pause');
+    const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let i=0,timer=null,paused=false;
+    const INTERVAL=5000;
+    function show(n){
+      i=(n+slides.length)%slides.length;
+      slides.forEach((s,k)=>{const on=k===i;s.classList.toggle('is-active',on);s.setAttribute('aria-hidden',on?'false':'true');});
+      dots.forEach((d,k)=>d.classList.toggle('is-active',k===i));
+      if(cap&&slides[i].dataset.cap) cap.textContent=slides[i].dataset.cap;
+    }
+    const next=()=>show(i+1);
+    function start(){ if(reduce||paused||timer) return; timer=setInterval(next,INTERVAL); }
+    function stop(){ if(timer){clearInterval(timer);timer=null;} }
+    dots.forEach((d,k)=>d.addEventListener('click',()=>{ show(k); stop(); start(); }));
+    if(pauseBtn){
+      pauseBtn.addEventListener('click',()=>{
+        paused=!paused;
+        if(paused) stop(); else start();
+        pauseBtn.setAttribute('aria-pressed',paused?'true':'false');
+        pauseBtn.setAttribute('aria-label',paused?'Diashow abspielen':'Diashow pausieren');
+        pauseBtn.textContent=paused?'▶':'❚❚';
+      });
+    }
+    stage.addEventListener('mouseenter',stop);
+    stage.addEventListener('mouseleave',start);
+    stage.addEventListener('focusin',stop);
+    stage.addEventListener('focusout',start);
+    document.addEventListener('visibilitychange',()=>{ document.hidden?stop():start(); });
+    start();
+  })();
+</script>
 </body>
 </html>
