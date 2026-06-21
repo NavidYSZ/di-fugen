@@ -92,11 +92,8 @@
   .stage-accent{position:absolute;top:14px;left:14px;width:34px;height:3px;background:var(--accent);z-index:4;border-radius:3px}
   .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;z-index:1}
   .slide.is-active{opacity:1;z-index:2}
-  .stage-scrim{position:absolute;inset:auto 0 0 0;height:52%;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,18,22,.84))}
-  .stage-bar{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:16px 18px}
-  .stage-word{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;letter-spacing:.12em;background:linear-gradient(180deg,#eef1f4,#c3cad2 70%,#eef1f4);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 1px 3px rgba(0,0,0,.6)}
-  .stage-cap{display:block;color:#fff;font-size:.82rem;font-weight:600;margin-top:2px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
-  .stage-nav{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+  .stage-scrim{position:absolute;inset:auto 0 0 0;height:34%;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(15,18,22,.5))}
+  .stage-bar{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:flex-end;justify-content:flex-end;gap:12px;padding:16px 18px}  .stage-nav{display:flex;align-items:center;gap:12px;flex:0 0 auto}
   .stage-pause{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.85);color:#15181d;font-size:.7rem;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3)}
   .stage-pause:hover{background:#fff}
   .stage-pause:focus-visible{outline:2px solid #fff;outline-offset:2px}
@@ -169,8 +166,8 @@
   footer ul{list-style:none}footer li{margin-bottom:9px}
   .foot-bottom{padding-top:22px;font-size:.86rem;color:#8b919a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-  /* Mobile Sticky-Call-Bar */
-  .call-bar{display:none}
+  /* Mobile: runder WhatsApp-Button unten links */
+  .wa-fab{display:none}
 
   /* Burger-Nav greift schon ab ≤1100px, damit der CTA-Button zwischen 901–1100px nicht abgeschnitten wird (iPad-Querformat, kleine Laptops) */
   @media(max-width:1200px){
@@ -209,11 +206,8 @@
     section.block{padding:60px 0}
     .head{margin-bottom:36px}
     .cta-band{padding:36px 26px}
-    body{padding-bottom:56px}
-    .call-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -6px 20px -8px rgba(0,0,0,.25)}
-    .call-bar a{padding:15px 8px;text-align:center;font-weight:800;color:#1a1a1a}
-    .call-bar .cb-call{background:var(--accent)}
-    .call-bar .cb-wa{background:#25D366;color:#fff}
+    .wa-fab{display:inline-flex;align-items:center;justify-content:center;position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 8px 22px -6px rgba(0,0,0,.45)}
+    .wa-fab svg{width:30px;height:30px;display:block}
   }
   @media(max-width:560px){
     .cards{grid-template-columns:1fr}
@@ -255,7 +249,7 @@
       <div class="has-dropdown">
         <a href="/leistungen/">Leistungen</a>
         <div class="dropdown">
-          <a href="/leistungen/"><strong>Leistungen – Übersicht</strong></a>
+          
           <a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a>
           <a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a>
           <a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a>
@@ -268,7 +262,7 @@
       <div class="has-dropdown">
         <a href="/einzugsgebiet/">Einzugsgebiet</a>
         <div class="dropdown">
-          <a href="/einzugsgebiet/"><strong>Einzugsgebiet – Übersicht</strong></a>
+          
           <a href="/einzugsgebiet/tornesch-kreis-pinneberg/">Tornesch &amp; Kreis Pinneberg</a>
           <a href="/einzugsgebiet/hamburg/">Hamburg</a>
         </div>
@@ -325,10 +319,6 @@
            loading="lazy" fetchpriority="low" aria-hidden="true" data-cap="Gewerbe · Restaurant, Hafenblick" />
       <div class="stage-scrim" aria-hidden="true"></div>
       <div class="stage-bar">
-        <div class="stage-brand">
-          <span class="stage-word">DI Fugentechnik</span>
-          <span class="stage-cap" id="stageCap" aria-live="polite" aria-atomic="true">Bad · grüne Glasfliesen, Nische</span>
-        </div>
         <div class="stage-nav">
           <button class="stage-pause" type="button" aria-label="Diashow pausieren" aria-pressed="false">❚❚</button>
           <div class="stage-dots" aria-label="Foto auswählen">
@@ -423,7 +413,7 @@
   </div>
 </footer>
 
-<div class="call-bar"><a class="cb-call" href="tel:+491629397703">Anrufen</a><a class="cb-wa" href="https://wa.me/491629397703" target="_blank" rel="noopener">WhatsApp</a></div>
+<a class="wa-fab" href="https://wa.me/491629397703" target="_blank" rel="noopener" aria-label="WhatsApp-Nachricht senden"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg></a>
 
 <script>
   const h=document.getElementById('hdr');

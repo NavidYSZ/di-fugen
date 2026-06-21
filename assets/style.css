@@ -936,21 +936,17 @@
     .cta-box { background: var(--light); border-left: 6px solid var(--yellow); padding: 22px 24px; margin: 30px 0; }
     .cta-box strong { color: var(--dark); display: block; margin-bottom: 6px; font-size: 1.1rem; }
 
-    /* ---- Mobile Sticky-Anruf-/WhatsApp-Leiste (Phase-0-Conversion) ---- */
-    /* Breakpoint auf 760px angehoben, damit das Verhalten mit der Startseite identisch ist.
-       Safe-Area-Inset (iPhone-Homebar) wird über env() berücksichtigt; wirkt mit viewport-fit=cover. */
-    .call-bar { display: none; }
+    /* ---- Mobile: runder WhatsApp-Button unten links (Telefon ist oben im Header/Topbar) ---- */
+    .wa-fab { display: none; }
     @media (max-width: 760px) {
-      .call-bar {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-        position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
-        box-shadow: 0 -6px 18px rgba(0,0,0,0.16);
-        padding-bottom: env(safe-area-inset-bottom);
+      .wa-fab {
+        display: inline-flex; align-items: center; justify-content: center;
+        position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60;
+        width: 56px; height: 56px; border-radius: 50%;
+        background: #25D366; color: #fff;
+        box-shadow: 0 8px 22px -6px rgba(0,0,0,0.45);
       }
-      .call-bar a { padding: 14px 8px; text-align: center; font-weight: 800; color: var(--dark); }
-      .call-bar .cb-call { background: var(--yellow); }
-      .call-bar .cb-wa { background: #25D366; color: #fff; }
-      body { padding-bottom: calc(52px + env(safe-area-inset-bottom)); }
+      .wa-fab svg { width: 30px; height: 30px; display: block; }
     }
 
     @media (max-width: 680px) {
