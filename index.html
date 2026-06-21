@@ -141,14 +141,22 @@
   .ba .tag{position:absolute;top:16px;left:16px;background:rgba(21,24,29,.82);color:#fff;padding:7px 15px;border-radius:100px;font-weight:700;font-size:.82rem;letter-spacing:.04em}
   .ba.after .tag{background:var(--accent);color:#1a1a1a}
 
-  /* Reviews / CTA */
-  .review{background:var(--ink);color:#fff;border-radius:28px;padding:64px 56px;display:grid;grid-template-columns:auto 1fr;gap:46px;align-items:center}
-  .review .score{text-align:center}
-  .review .score .n{font-family:'Plus Jakarta Sans';font-weight:800;font-size:4.4rem;line-height:1}
-  .review .score .s{color:var(--accent);font-size:1.4rem;letter-spacing:2px}
-  .review .score .c{color:#aeb4bd;font-size:.9rem;margin-top:6px}
-  .review q{font-family:'Plus Jakarta Sans';font-weight:600;font-size:clamp(1.3rem,2.2vw,1.9rem);display:block;line-height:1.35}
-  .review .by{color:#aeb4bd;margin-top:18px}
+  /* Reviews (echte Google-Bewertungen) */
+  .reviews{background:var(--ink);color:#fff;border-radius:28px;padding:48px 48px 44px}
+  .reviews-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px}
+  .rscore{display:flex;align-items:baseline;gap:10px}
+  .rscore .rn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:3rem;line-height:1}
+  .rscore .rstars{color:var(--accent);font-size:1.25rem;letter-spacing:2px}
+  .reviews-meta{margin-right:auto}
+  .reviews-meta strong{display:block;font-size:1.05rem}
+  .reviews-meta span{color:#aeb4bd;font-size:.9rem}
+  .reviews-link{color:var(--accent);font-weight:700;font-size:.95rem;white-space:nowrap}
+  .reviews-link:hover{color:#fff}
+  .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .rcard{margin:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+  .rcard-stars{color:var(--accent);font-size:.95rem;letter-spacing:1px}
+  .rcard blockquote{margin:0;font-size:.97rem;line-height:1.55;color:#e7e9ec}
+  .rcard figcaption{color:#aeb4bd;font-size:.88rem;font-weight:700;margin-top:auto}
 
   .cta-band{background:linear-gradient(120deg,#ffce3a,#e89c00);border-radius:28px;padding:56px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .cta-band h2{font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:700;color:#1a1a1a}
@@ -181,10 +189,10 @@
     .nav-actions .btn{padding:11px 18px;font-size:.92rem}
   }
   @media(max-width:900px){
-    .why-grid,.ba-grid,.review,.foot-grid{grid-template-columns:1fr}
+    .why-grid,.ba-grid,.foot-grid,.rgrid{grid-template-columns:1fr}
     .cards{grid-template-columns:1fr 1fr}
     .why-media img{height:380px}
-    .review{padding:40px 28px;text-align:center}.review .score .n{font-size:3.4rem}
+    .reviews{padding:32px 24px}
     .topbar .wrap span:first-child{display:none}
     .topbar .wrap{justify-content:center}
   }
@@ -355,9 +363,17 @@
 
 <section class="block" style="padding-top:0">
   <div class="wrap">
-    <div class="review">
-      <div class="score"><div class="n">5,0</div><div class="s">★★★★★</div><div class="c">11 Bewertungen bei Google</div></div>
-      <div><p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.4;margin:0 0 18px">Verlassen Sie sich nicht nur auf unser Wort: In unserem Google-Profil finden Sie echte Bewertungen von Kundinnen und Kunden aus der Region.</p><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=DI+Fugentechnik+Tornesch" target="_blank" rel="noopener" style="background:#fff;color:#15181d;box-shadow:none">Bewertungen bei Google lesen</a></div>
+    <div class="reviews">
+      <div class="reviews-head">
+        <div class="rscore"><span class="rn">5,0</span><span class="rstars">★★★★★</span></div>
+        <div class="reviews-meta"><strong>11 Google-Bewertungen</strong><span>Echte Stimmen unserer Kundinnen und Kunden</span></div>
+        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=DI+Fugentechnik+Tornesch" target="_blank" rel="noopener">Alle bei Google ansehen →</a>
+      </div>
+      <div class="rgrid">
+        <figure class="rcard"><div class="rcard-stars">★★★★★</div><blockquote>„Sehr tolle fachliche Leistung und souverän, ich bin begeistert und kann es nur weiterempfehlen! Das Preis-Leistungs-Verhältnis ist top!"</blockquote><figcaption>Cabbar Beyaz</figcaption></figure>
+        <figure class="rcard"><div class="rcard-stars">★★★★★</div><blockquote>„Sehr zuverlässiger Service und saubere Arbeit! Man merkt sofort, dass hier mit Erfahrung und Sorgfalt gearbeitet wird. Termine wurden eingehalten, die Kommunikation war freundlich und unkompliziert. Klare Empfehlung!"</blockquote><figcaption>Svd</figcaption></figure>
+        <figure class="rcard"><div class="rcard-stars">★★★★★</div><blockquote>„Sehr zuverlässiger und kompetenter Handwerker. Die Arbeiten wurden sauber, pünktlich und zu unserer vollsten Zufriedenheit ausgeführt. Freundlicher Kontakt und faire Beratung. Klare Weiterempfehlung!"</blockquote><figcaption>Isparta 1 Hamburg</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>

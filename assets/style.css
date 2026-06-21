@@ -1077,6 +1077,9 @@
     footer { background: var(--ink); }
     footer a:hover { color: var(--accent); }
 
+    /* ---- Sterne in Testimonial-Karten ---- */
+    .testimonial .t-stars { color: var(--accent); letter-spacing: 1px; font-size: 0.95rem; margin-bottom: 8px; }
+
     /* ---- Vorher/Nachher-Block (Referenzen) – deutlich abgesetzt von der Galerie ---- */
     .ba-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .ba-card { position: relative; margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: #fff; box-shadow: var(--shadow-sm); }
