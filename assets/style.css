@@ -11,7 +11,7 @@
       --yellow-dark: #d99b00;
       --dark: #222222;
       --text: #444444;
-      --muted: #737373;
+      --muted: #6e6e6e;
       --light: #f7f7f7;
       --border: #e2e2e2;
       --white: #ffffff;
@@ -32,6 +32,36 @@
     img {
       max-width: 100%;
       display: block;
+    }
+
+    /* ---- Globale Fokus-Sichtbarkeit (Tastaturbedienung) ---- */
+    a:focus-visible,
+    .btn:focus-visible,
+    button:focus-visible,
+    summary:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #15181d;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ---- Skip-Link ("Zum Inhalt springen") ---- */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+    }
+    .skip-link:focus {
+      left: 8px;
+      top: 8px;
+      z-index: 100;
+      background: #15181d;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
     }
 
     .container {
@@ -695,10 +725,26 @@
     .nav-links a.active { color: var(--yellow-dark); }
 
     /* ---- Mobiles Menü (Hamburger, reines CSS) ---- */
-    .nav-toggle { display: none; }
+    /* Checkbox bleibt fokussierbar (statt display:none), nur visuell versteckt */
+    .nav-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
     .nav-burger { display: none; }
+    /* Sichtbarer Fokusring, wenn die Checkbox per Tastatur fokussiert ist */
+    .nav-toggle:focus + .nav-burger,
+    .nav-toggle:focus-visible + .nav-burger {
+      outline: 3px solid #15181d;
+      outline-offset: 2px;
+    }
     @media (max-width: 980px) {
       header .nav { position: relative; flex-wrap: nowrap; }
+      /* Zweiten "Anrufen"-Button im Burger-Bereich ausblenden,
+         damit nicht Burger UND gelber Button gleichzeitig erscheinen */
+      .nav .nav-call { display: none; }
       .nav-burger {
         display: inline-flex;
         flex-direction: column;
@@ -891,17 +937,20 @@
     .cta-box strong { color: var(--dark); display: block; margin-bottom: 6px; font-size: 1.1rem; }
 
     /* ---- Mobile Sticky-Anruf-/WhatsApp-Leiste (Phase-0-Conversion) ---- */
+    /* Breakpoint auf 760px angehoben, damit das Verhalten mit der Startseite identisch ist.
+       Safe-Area-Inset (iPhone-Homebar) wird über env() berücksichtigt; wirkt mit viewport-fit=cover. */
     .call-bar { display: none; }
-    @media (max-width: 680px) {
+    @media (max-width: 760px) {
       .call-bar {
         display: grid; grid-template-columns: 1fr 1fr; gap: 0;
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
         box-shadow: 0 -6px 18px rgba(0,0,0,0.16);
+        padding-bottom: env(safe-area-inset-bottom);
       }
       .call-bar a { padding: 14px 8px; text-align: center; font-weight: 800; color: var(--dark); }
       .call-bar .cb-call { background: var(--yellow); }
       .call-bar .cb-wa { background: #25D366; color: #fff; }
-      body { padding-bottom: 52px; }
+      body { padding-bottom: calc(52px + env(safe-area-inset-bottom)); }
     }
 
     @media (max-width: 680px) {
@@ -919,3 +968,115 @@
       }
       .nav-links .dropdown a { padding: 8px 7%; font-weight: 600; }
     }
+
+    /* ======================================================================
+       MARKEN-ANGLEICHUNG an die Startseite (Premium-Design-System)
+       Gleicht Typografie, Header, Logo, Buttons, Akzente, CTA & Footer der
+       Unterseiten an die self-contained index.html an. Reines Override am
+       Dateiende: aendert nur die Optik, kein Layout-Umbau.
+       ====================================================================== */
+    :root {
+      --ink: #15181d;
+      --accent: #f2b705;
+      --accent-d: #d99b00;
+      --accent-text: #9a6f00;        /* AA-konformer Gold-Ton fuer Text auf hellem Grund (>=4,5:1) */
+      --surface: #f7f5f1;
+      --radius-card: 14px;
+      --shadow: 0 22px 60px -24px rgba(20,24,29,.28);
+      --shadow-sm: 0 10px 30px -18px rgba(20,24,29,.30);
+      /* bestehende Tokens auf Premium-Werte umpunkten (Regeln nutzen sie bereits) */
+      --dark: #15181d;
+      --border: #e8e5df;
+      --light: #f7f5f1;
+    }
+
+    /* ---- Typografie (Web-Fonts wie Startseite) ---- */
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    h1, h2, h3, h4,
+    .logo, .logo b,
+    .page-hero h1, .final-cta h2,
+    footer h3, footer h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      letter-spacing: -.01em;
+    }
+    .logo-mark { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ---- Topbar ---- */
+    .topbar { background: var(--ink); color: #d6dade; }
+    .topbar a { color: #fff; }
+
+    /* ---- Header: heller Glas-Look mit weichem Schatten (wie Startseite) ---- */
+    header {
+      background: rgba(255,255,255,.92);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 6px 24px -18px rgba(20,24,29,.5);
+    }
+
+    /* ---- Logo: gravierte Gold-Kachel + Playfair-Mark (wie Startseite) ---- */
+    .logo { gap: 12px; font-size: 1.2rem; }
+    .logo-mark {
+      width: 46px; height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(150deg, #ffce3a, #e89c00);
+      color: #1a1a1a;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .logo small { font-weight: 500; margin-top: 0; letter-spacing: .01em; }
+
+    /* ---- Buttons: Pill-Form + sanfte Anhebung ---- */
+    .btn {
+      border-radius: 100px;
+      padding: 14px 24px;
+      border: 1.5px solid transparent;
+      font-weight: 700;
+      box-shadow: 0 12px 26px -12px rgba(242,183,5,.6);
+      transition: .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-outline { box-shadow: none; }
+    .final-cta .btn { box-shadow: 0 14px 30px -12px rgba(0,0,0,.5); }
+
+    /* ---- Akzent-Text auf HELLEM Grund: AA-konformer dunkler Gold-Ton ---- */
+    .text-link,
+    .content-section a:not(.btn),
+    .nav-links a.active,
+    .nav-links a:hover,
+    .breadcrumb-inner a:hover,
+    .section-title .overline,
+    .about-content .overline,
+    .process-number,
+    .team-role,
+    .hub-card a:not(.btn),
+    .faq-block summary::after,
+    .faq-block details[open] summary::after {
+      color: var(--accent-text);
+    }
+
+    /* ---- Seitenkopf der Unterseiten: tiefes Ink statt flachem Grau ---- */
+    .page-hero { background: var(--ink); }
+    .page-hero .overline { color: var(--accent); }   /* heller Gold auf Dunkel = guter Kontrast */
+
+    /* ---- Breadcrumb auf warmem Surface ---- */
+    .breadcrumb { background: var(--surface); border-bottom: 1px solid var(--border); }
+
+    /* ---- Weichere Radien fuer Karten/Felder (Form-Sprache der Startseite) ---- */
+    .benefit, .service-card, .process-card, .quote-box, .hub-card,
+    .faq-block details, .place-chip, .cta-box,
+    .media-figure img, .media-duo img {
+      border-radius: var(--radius-card);
+    }
+    input, textarea, select { border-radius: 10px; }
+    .service-card { overflow: hidden; }
+
+    /* ---- Dunkle Sektionen auf einheitliches Ink ---- */
+    .dark-section { background: var(--ink); }
+
+    /* ---- Abschluss-CTA: Gold-Verlauf statt flacher Flaeche (wie Startseite) ---- */
+    .final-cta { background: linear-gradient(120deg, #ffce3a, #e89c00); }
+
+    /* ---- Footer: einheitliches Ink (wie Startseite) ---- */
+    footer { background: var(--ink); }
+    footer a:hover { color: var(--accent); }

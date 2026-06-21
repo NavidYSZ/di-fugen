@@ -21,12 +21,12 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://di-fugen.de/#business", "name": "DI Fugentechnik", "alternateName": "Di Fugen", "url": "https://di-fugen.de/", "telephone": "+491629397703", "email": "di.fugen@gmx.de", "image": "https://di-fugen.de/assets/bilder/fahrzeug-transporter-seite.jpeg", "address": {"@type": "PostalAddress", "streetAddress": "Pastorendamm 15a", "postalCode": "25436", "addressLocality": "Tornesch", "addressRegion": "Schleswig-Holstein", "addressCountry": "DE"}, "founder": {"@type": "Person", "name": "Ibrahim Korkmaz"}, "areaServed": [{"@type": "City", "name": "Tornesch"}, {"@type": "City", "name": "Pinneberg"}, {"@type": "City", "name": "Uetersen"}, {"@type": "City", "name": "Elmshorn"}, {"@type": "City", "name": "Wedel"}, {"@type": "City", "name": "Halstenbek"}, {"@type": "City", "name": "Rellingen"}, {"@type": "City", "name": "Schenefeld"}, {"@type": "City", "name": "Norderstedt"}, {"@type": "City", "name": "Hamburg"}], "priceRange": "€€", "knowsAbout": ["Silikonfugen", "Fugensanierung", "PU-Fugen", "Dehnungsfugen", "Natursteinversiegelung", "Abdichtung"]}</script>
 <style>
   :root{
     --ink:#15181d; --bg:#ffffff; --surface:#f7f5f1; --surface2:#fbfaf8; --warm:#f7f5f1;
-    --line:#e8e5df; --muted:#6c727b; --accent:#f2b705; --accent-d:#d99b00;
+    --line:#e8e5df; --muted:#6c727b; --accent:#f2b705; --accent-d:#d99b00; --accent-text:#9a6f00;
     --radius:22px; --shadow:0 22px 60px -24px rgba(20,24,29,.28);
     --shadow-sm:0 10px 30px -18px rgba(20,24,29,.30);
   }
@@ -39,7 +39,7 @@
   .wrap{width:min(1180px,92%);margin:0 auto}
   .skip-link{position:absolute;left:-9999px;top:0}
   .skip-link:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700}
-  .eyebrow{font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-d)}
+  .eyebrow{font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:15px 26px;border-radius:100px;font-weight:700;font-size:.98rem;line-height:1.15;white-space:nowrap;transition:.25s ease;border:1.5px solid transparent;cursor:pointer}
   .btn-primary{background:var(--accent);color:#1a1a1a;box-shadow:0 12px 26px -10px rgba(242,183,5,.7)}
   .btn-primary:hover{transform:translateY(-2px);background:var(--accent-d)}
@@ -60,13 +60,13 @@
   .logo small{display:block;font-size:.74rem;font-weight:500;color:var(--muted);letter-spacing:.02em}
   .nav-links{flex:1;display:flex;align-items:center;justify-content:center;gap:26px;font-weight:600;font-size:.95rem}
   .nav-links>a,.has-dropdown>a{color:#3b424b;white-space:nowrap}
-  .nav-links a:hover{color:var(--accent-d)}
+  .nav-links a:hover{color:var(--accent-text)}
   .has-dropdown{position:relative}
   .has-dropdown>a::after{content:" ▾";font-size:.8em;color:var(--muted)}
   .dropdown{display:none;position:absolute;top:100%;left:0;min-width:248px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;margin-top:10px}
   .has-dropdown:hover .dropdown,.has-dropdown:focus-within .dropdown{display:block}
   .dropdown a{display:block;padding:10px 14px;border-radius:9px;font-weight:600;color:#3b424b;white-space:nowrap}
-  .dropdown a:hover{background:var(--surface);color:var(--accent-d)}
+  .dropdown a:hover{background:var(--surface);color:var(--accent-text)}
   .dropdown a strong{color:var(--ink)}
   .nav-actions{display:flex;align-items:center;gap:16px;margin-left:auto}
   .nav-tel{font-weight:700;font-size:.95rem;white-space:nowrap}
@@ -80,7 +80,7 @@
   .hero-grid{position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:48px;align-items:center;text-align:left}
   .hero-copy .eyebrow{display:inline-block;margin-bottom:14px}
   .hero h1{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:700;margin:0 0 14px;max-width:16ch}
-  .hero h1 .hl{color:var(--accent-d)}
+  .hero h1 .hl{color:var(--accent-text)}
   .hero .sub{color:#454b53;font-size:1.12rem;max-width:46ch;margin:0 0 22px}
   .hero-cta{display:flex;gap:13px;flex-wrap:wrap;justify-content:flex-start;margin-bottom:18px}
   .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start}
@@ -108,7 +108,7 @@
 
   /* Trust strip */
   .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface2)}
-  .trust-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding:26px 0}
+  .trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:26px 0}
   .trust-item{display:flex;align-items:center;gap:12px;font-weight:600;color:#3b424b;font-size:.96rem}
   .trust-item .ic{width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent-d)}
   .trust-item .ic svg{width:20px;height:20px}
@@ -126,7 +126,7 @@
   .card .ic svg{width:26px;height:26px}
   .card h3{font-size:1.22rem;margin-bottom:8px}
   .card p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
-  .card a{font-weight:700;color:var(--accent-d);font-size:.92rem}
+  .card a{font-weight:700;color:var(--accent-text);font-size:.92rem}
 
   /* Why */
   .why{background:var(--surface)}
@@ -172,9 +172,8 @@
   /* Mobile Sticky-Call-Bar */
   .call-bar{display:none}
 
-  @media(max-width:900px){
-    .why-grid,.ba-grid,.review,.foot-grid{grid-template-columns:1fr}
-    .cards{grid-template-columns:1fr 1fr}
+  /* Burger-Nav greift schon ab ≤1100px, damit der CTA-Button zwischen 901–1100px nicht abgeschnitten wird (iPad-Querformat, kleine Laptops) */
+  @media(max-width:1200px){
     .nav{gap:14px}
     .nav-tel{display:none}
     .nav-burger{display:inline-flex}
@@ -186,6 +185,10 @@
     .dropdown a{padding:9px 8%}
     .nav-links.is-open{display:flex}
     .nav-actions .btn{padding:11px 18px;font-size:.92rem}
+  }
+  @media(max-width:900px){
+    .why-grid,.ba-grid,.review,.foot-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}
     .why-media img{height:380px}
     .review{padding:40px 28px;text-align:center}.review .score .n{font-size:3.4rem}
     .topbar .wrap span:first-child{display:none}
@@ -199,6 +202,7 @@
     .stage{order:-1;aspect-ratio:16/11;max-height:30vh;box-shadow:var(--shadow),inset 0 0 0 4px #fff}
     .hero h1{font-size:clamp(1.5rem,6vw,1.9rem);max-width:none;margin-bottom:10px}
     .hero .sub{font-size:1rem;max-width:none;margin-bottom:14px}
+    .trust-row{grid-template-columns:1fr 1fr}
     .hero-cta{flex-direction:column;gap:10px;margin-bottom:14px}
     .hero-cta .btn{width:100%}
     .pill-extra{display:none}
@@ -213,6 +217,7 @@
   }
   @media(max-width:560px){
     .cards{grid-template-columns:1fr}
+    .trust-row{grid-template-columns:1fr}
     .nav{padding:12px 0;gap:12px}
     .logo small{display:none}
     .logo .mark{width:40px;height:40px;font-size:1.05rem}
@@ -241,7 +246,7 @@
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="topbar"><div class="wrap"><span>Fugentechnik &amp; Sanierung · Tornesch · Kreis Pinneberg · Hamburg</span><span><a href="tel:+491629397703">0162 93 97703</a> · <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></span></div></div>
+<div class="topbar"><div class="wrap"><span>Fugentechnik &amp; Fugensanierung · Tornesch und Umgebung</span><span><a href="tel:+491629397703">0162 93 97703</a> · <a href="mailto:di.fugen@gmx.de">di.fugen@gmx.de</a></span></div></div>
 
 <header id="hdr">
   <div class="wrap nav">
@@ -309,15 +314,15 @@
       <img class="slide" src="/assets/bilder/referenz-naturstein-treppe-travertin.jpeg"
            alt="Verfugte Naturstein-Treppe aus Travertin"
            style="object-position:center 38%" width="739" height="958"
-           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Naturstein · Travertin-Treppe" />
+           loading="lazy" fetchpriority="low" aria-hidden="true" data-cap="Naturstein · Travertin-Treppe" />
       <img class="slide" src="/assets/bilder/referenz-bad-anthrazit-nische.jpeg"
            alt="Modernes anthrazitfarbenes Bad mit präziser Nischenfuge"
            style="object-position:center 30%" width="1200" height="1600"
-           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Bad · anthrazit, Wandnische" />
+           loading="lazy" fetchpriority="low" aria-hidden="true" data-cap="Bad · anthrazit, Wandnische" />
       <img class="slide" src="/assets/bilder/referenz-gewerbe-restaurant-hafenblick.jpeg"
            alt="Gewerbe-Referenz: Restaurant mit Hafenblick"
            style="object-position:center center" width="1600" height="1200"
-           loading="eager" fetchpriority="low" aria-hidden="true" data-cap="Gewerbe · Restaurant, Hafenblick" />
+           loading="lazy" fetchpriority="low" aria-hidden="true" data-cap="Gewerbe · Restaurant, Hafenblick" />
       <div class="stage-scrim" aria-hidden="true"></div>
       <div class="stage-bar">
         <div class="stage-brand">
