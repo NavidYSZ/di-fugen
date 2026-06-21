@@ -1010,17 +1010,10 @@
       box-shadow: 0 6px 24px -18px rgba(20,24,29,.5);
     }
 
-    /* ---- Logo: gravierte Gold-Kachel + Playfair-Mark (wie Startseite) ---- */
+    /* ---- Logo: echtes Logo-Bild als Badge + Wortmarke (wie Startseite) ---- */
     .logo { gap: 12px; font-size: 1.2rem; }
-    .logo-mark {
-      width: 46px; height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(150deg, #ffce3a, #e89c00);
-      color: #1a1a1a;
-      font-size: 1.2rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .logo small { font-weight: 500; margin-top: 0; letter-spacing: .01em; }
+    .logo-img { width: 46px; height: 46px; border-radius: 12px; display: block; flex: 0 0 auto; box-shadow: var(--shadow-sm); }
+    .logo-txt { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--ink); letter-spacing: -.01em; white-space: nowrap; }
 
     /* ---- Buttons: Pill-Form + sanfte Anhebung ---- */
     .btn {

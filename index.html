@@ -33,7 +33,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,.logo b{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1;letter-spacing:-.02em}
+  h1,h2,h3,.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1;letter-spacing:-.02em}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{width:min(1180px,92%);margin:0 auto}
@@ -56,8 +56,8 @@
   header.scrolled{background:rgba(255,255,255,.9);border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(20,24,29,.5)}
   .nav{position:relative;display:flex;align-items:center;gap:24px;padding:14px 0}
   .logo{display:flex;align-items:center;gap:12px;font-weight:700}
-  .logo .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(150deg,#ffce3a,#e89c00);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;color:#1a1a1a;font-size:1.2rem;box-shadow:var(--shadow-sm)}
-  .logo small{display:block;font-size:.74rem;font-weight:500;color:var(--muted);letter-spacing:.02em}
+  .logo-img{width:46px;height:46px;border-radius:12px;display:block;flex:0 0 auto;box-shadow:var(--shadow-sm)}
+  .logo-txt{font-size:1.2rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
   .nav-links{flex:1;display:flex;align-items:center;justify-content:center;gap:26px;font-weight:600;font-size:.95rem}
   .nav-links>a,.has-dropdown>a{color:#3b424b;white-space:nowrap}
   .nav-links a:hover{color:var(--accent-text)}
@@ -175,7 +175,7 @@
   .wa-fab{display:none}
 
   /* Burger-Nav greift schon ab ≤1100px, damit der CTA-Button zwischen 901–1100px nicht abgeschnitten wird (iPad-Querformat, kleine Laptops) */
-  @media(max-width:1200px){
+  @media(max-width:980px){
     .nav{gap:14px}
     .nav-tel{display:none}
     .nav-burger{display:inline-flex}
@@ -186,7 +186,7 @@
     .dropdown{display:block;position:static;border:0;box-shadow:none;border-radius:0;padding:0 0 8px;margin:0;min-width:0;background:var(--surface)}
     .dropdown a{padding:9px 8%}
     .nav-links.is-open{display:flex}
-    .nav-actions .btn{padding:11px 18px;font-size:.92rem}
+    .nav-actions .btn{display:none}
   }
   @media(max-width:900px){
     .why-grid,.ba-grid,.foot-grid,.rgrid{grid-template-columns:1fr}
@@ -218,10 +218,8 @@
     .cards{grid-template-columns:1fr}
     .trust-row{grid-template-columns:1fr}
     .nav{padding:12px 0;gap:12px}
-    .logo small{display:none}
-    .logo .mark{width:40px;height:40px;font-size:1.05rem}
-    .logo b{font-size:1rem}
-    .nav-actions .btn{display:none}
+    .logo-img{width:40px;height:40px}
+    .logo-txt{font-size:1rem}
   }
   @media(max-height:640px) and (max-width:760px){ .stage{max-height:26vh} }
   /* Querformat-Phones (kurze Höhe): Hero stapeln, Topbar aus */
@@ -249,11 +247,10 @@
 
 <header id="hdr">
   <div class="wrap nav">
-    <a class="logo" href="/" aria-label="DI Fugentechnik Startseite"><span class="mark">DI</span><span><b>DI Fugentechnik</b><small>Fugentechnik &amp; Sanierung</small></span></a>
+    <a class="logo" href="/" aria-label="DI Fugentechnik Startseite"><img class="logo-img" src="/assets/logo.png" alt="DI Fugentechnik" width="46" height="46" /><span class="logo-txt">DI Fugentechnik</span></a>
     <nav class="nav-links" id="navlinks" aria-label="Hauptnavigation"><a href="/ueber-uns/">Über uns</a><div class="has-dropdown"><a href="/leistungen/">Leistungen</a><div class="dropdown"><a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a><a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a><a href="/leistungen/naturstein-granit-versiegelung/">Naturstein &amp; Versiegelung</a><a href="/leistungen/abdichtung-dusche-bad-kueche/">Abdichtung Bad &amp; Küche</a><a href="/leistungen/balkon-terrassenfugen/">Balkon &amp; Terrasse</a><a href="/leistungen/gewerbe-spezialfugen/">Gewerbe- &amp; Spezialfugen</a></div></div><a href="/referenzen/">Referenzen</a><a href="/kontakt/">Kontakt</a></nav>
     <div class="nav-actions">
-      <a class="nav-tel" href="tel:+491629397703">0162 93 97703</a>
-      <a class="btn btn-primary" href="tel:+491629397703">Angebot anfragen</a>
+      <a class="btn btn-primary" href="/kontakt/">Angebot anfragen</a>
       <button type="button" class="nav-burger" id="navtoggle" aria-controls="navlinks" aria-expanded="false" aria-label="Menü öffnen"><span></span></button>
     </div>
   </div>
