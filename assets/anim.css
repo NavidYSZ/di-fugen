@@ -1,0 +1,81 @@
+/* =====================================================================
+   DI Fugentechnik – Bewegungs-/Smoothness-Layer (site-weit)
+   Scroll-Reveal + Mikro-Interaktionen. Wird auf Startseite UND allen
+   Unterseiten eingebunden (assets/anim.js liefert die Logik).
+
+   Sicherheits-Prinzipien:
+   - Anfangs-Versteckzustand NUR unter html.js (von anim.js gesetzt) UND nur
+     bei (prefers-reduced-motion: no-preference). Ohne JS oder bei
+     reduzierter Bewegung ist ALLES sofort sichtbar (kein FOUC, kein Verstecken).
+   - Hero/LCP wird nie versteckt (Ladezeit/SEO bleibt unangetastet).
+   - Nur GPU-freundliche Eigenschaften (opacity, transform).
+   ===================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* sanftes In-Page-Scrollen */
+  html { scroll-behavior: smooth; }
+
+  /* Reveal-Anfangszustand (vor dem Sichtbarwerden) */
+  html.js main :is(
+    .card, .contact-card, .testimonial, .gallery-item, .media-figure,
+    .media-duo, .team-card, .trust-item, .stat, .ba-card, .ba, .cta-box,
+    .faq-block, .final-cta-inner, .rcard, .why-media, .reviews,
+    .section-title, .content-narrow, .lead
+  ) {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .7s cubic-bezier(.22, .61, .36, 1),
+                transform .7s cubic-bezier(.22, .61, .36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  /* Reveal-Endzustand (sichtbar) */
+  html.js main :is(
+    .card, .contact-card, .testimonial, .gallery-item, .media-figure,
+    .media-duo, .team-card, .trust-item, .stat, .ba-card, .ba, .cta-box,
+    .faq-block, .final-cta-inner, .rcard, .why-media, .reviews,
+    .section-title, .content-narrow, .lead
+  ).is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero/LCP + die Trust-Leiste direkt darunter NIE verstecken – schützt
+     Ladezeit und vermeidet ein Aufblenden above-the-fold (.trust liegt als
+     Geschwister NEBEN .hero, nicht darin) */
+  html.js :is(.hero, .page-hero, .stage, .trust) :is(
+    .card, .contact-card, .testimonial, .gallery-item, .media-figure,
+    .media-duo, .team-card, .trust-item, .stat, .ba-card, .ba, .cta-box,
+    .faq-block, .final-cta-inner, .rcard, .why-media, .reviews,
+    .section-title, .content-narrow, .lead
+  ) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Mikro-Interaktion: sanfter Bild-Zoom in Galerie/Referenz-Figuren
+     (Bild ist Kind-Element → kein Konflikt mit dem Reveal des Containers) */
+  main .gallery-item,
+  main .media-figure { overflow: hidden; }
+
+  main .gallery-item img,
+  main .media-figure img {
+    transition: transform .55s cubic-bezier(.22, .61, .36, 1);
+  }
+  main .gallery-item:hover img,
+  main .media-figure:hover img { transform: scale(1.045); }
+
+  /* Buttons: dezentes Druck-Feedback */
+  .btn {
+    transition: transform .15s ease, background-color .2s ease,
+                color .2s ease, box-shadow .25s ease, border-color .2s ease;
+  }
+  .btn:active { transform: translateY(1px) scale(.99); }
+}
+
+/* Farb-Übergänge sind auch bei reduzierter Bewegung unkritisch */
+a { transition: color .2s ease; }
+
+/* Anker-Ziele nicht unter dem Sticky-Header verstecken */
+main [id] { scroll-margin-top: 92px; }
