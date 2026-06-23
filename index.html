@@ -73,6 +73,8 @@
   .nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:46px;height:42px;cursor:pointer;background:none;border:0;padding:0}
   .nav-burger span,.nav-burger::before,.nav-burger::after{content:"";display:block;width:26px;height:3px;background:var(--ink);border-radius:2px}
   .nav-burger:focus-visible{outline:2px solid var(--accent-d);outline-offset:3px;border-radius:6px}
+  /* Drawer-Bausteine: auf Desktop ausgeblendet, nur ≤980px aktiv */
+  .nav-backdrop,.nav-drawer-head,.nav-close,.nav-acc-toggle,.nav-drawer-foot{display:none}
 
   /* HERO – Split-Layout + automatische Foto-Bühne */
   .hero{background:var(--warm);position:relative;overflow:hidden;padding:48px 0 56px}
@@ -176,18 +178,60 @@
 
   /* Burger-Nav greift schon ab ≤1100px, damit der CTA-Button zwischen 901–1100px nicht abgeschnitten wird (iPad-Querformat, kleine Laptops) */
   @media(max-width:980px){
+    /* backdrop-filter am Header bildet sonst den Bezugsrahmen für position:fixed
+       (Drawer + Backdrop würden an der Header-Box kleben statt am Viewport). */
+    header{backdrop-filter:none;-webkit-backdrop-filter:none}
+    /* Offener Drawer: Header-Stapelkontext über den WhatsApp-FAB (z-60) heben */
+    body.nav-open header{z-index:1200}
     .nav{gap:14px}
     .nav-tel{display:none}
-    .nav-burger{display:inline-flex}
-    .nav-links{flex:none;display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 16px 16px;box-shadow:var(--shadow);padding:6px 0;font-size:1rem}
-    .nav-links>a,.has-dropdown>a{display:block;padding:13px 5%;width:100%;color:var(--ink)}
-    .has-dropdown{width:100%}
-    .has-dropdown>a::after{content:""}
-    .dropdown{display:block;position:static;border:0;box-shadow:none;border-radius:0;padding:0 0 8px;margin:0;min-width:0;background:var(--surface)}
-    .dropdown a{padding:9px 8%}
-    .nav-links.is-open{display:flex}
     .nav-actions .btn{display:none}
+
+    /* Hamburger -> X (z-index unter dem Drawer 1200: wird beim Öffnen verdeckt) */
+    .nav-burger{display:inline-flex;position:relative;width:46px;height:46px;gap:6px;z-index:1199}
+    .nav-burger span,.nav-burger::before,.nav-burger::after{transition:transform .25s ease,opacity .2s ease}
+    .nav-burger.is-open::before{transform:translateY(9px) rotate(45deg)}
+    .nav-burger.is-open span{opacity:0}
+    .nav-burger.is-open::after{transform:translateY(-9px) rotate(-45deg)}
+
+    /* Backdrop / Scrim */
+    .nav-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;z-index:1190}
+    body.nav-open .nav-backdrop{opacity:1;visibility:visible}
+
+    /* Drawer */
+    .nav-links{flex:none;position:fixed;top:0;right:0;left:auto;bottom:0;height:100%;height:100dvh;width:min(86vw,360px);display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;background:var(--bg);border:0;border-radius:0;box-shadow:-18px 0 50px -18px rgba(20,24,29,.45);padding:0;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .28s ease;z-index:1200;font-size:1.02rem}
+    body.nav-open .nav-links{transform:translateX(0)}
+
+    /* Drawer-Kopf */
+    .nav-drawer-head{display:flex;align-items:center;justify-content:flex-end;padding:14px 14px 6px;flex:0 0 auto}
+    .nav-close{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;background:none;color:var(--ink);cursor:pointer;border-radius:10px}
+    .nav-close:hover{background:var(--surface)}
+    .nav-close svg{width:22px;height:22px;display:block}
+
+    /* Links */
+    .nav-links>a,.nav-acc-toggle{display:flex;align-items:center;min-height:52px;padding:13px 22px;width:100%;color:var(--ink);font-weight:600;border-bottom:1px solid var(--line)}
+    .nav-links>a:hover,.nav-acc-toggle:hover{color:var(--accent-text)}
+
+    /* Leistungen-Akkordeon */
+    .has-dropdown{width:100%;border-bottom:1px solid var(--line)}
+    .has-dropdown>a{display:none}
+    .has-dropdown>a::after{content:""}
+    .nav-acc-toggle{justify-content:space-between;background:none;border:0;border-bottom:0;font:inherit;font-weight:600;text-align:left;cursor:pointer}
+    .nav-acc-toggle .chev{transition:transform .25s ease;color:var(--muted);font-size:.9em;margin-left:12px}
+    .has-dropdown.is-expanded .nav-acc-toggle .chev{transform:rotate(180deg)}
+    .dropdown{display:block;max-height:0;position:static;border:0;box-shadow:none;border-radius:0;padding:0;margin:0;min-width:0;background:var(--surface);overflow:hidden;transition:max-height .28s ease}
+    .has-dropdown.is-expanded .dropdown{max-height:480px}
+    .dropdown a{display:block;min-height:46px;padding:12px 22px 12px 34px;border-bottom:1px solid var(--line)}
+    .dropdown a:last-child{border-bottom:0}
+
+    /* Drawer-Fuß */
+    .nav-drawer-foot{display:block;margin-top:auto;padding:18px 22px calc(20px + env(safe-area-inset-bottom));flex:0 0 auto}
+    .nav-drawer-foot .btn{display:flex;width:100%;margin-bottom:12px}
+    .nav-drawer-tel{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--ink);padding:8px 0}
+
+    .nav-burger:focus-visible,.nav-close:focus-visible{outline:2px solid var(--accent-d);outline-offset:3px;border-radius:8px}
   }
+  body.nav-open{overflow:hidden}
   @media(max-width:900px){
     .why-grid,.ba-grid,.foot-grid,.rgrid{grid-template-columns:1fr}
     .cards{grid-template-columns:1fr 1fr}
@@ -237,6 +281,7 @@
     .slide,.dot,.btn-primary{transition:none}
     .btn-primary:hover{transform:none}
     .stage-pause{display:none}
+    .nav-links,.nav-backdrop,.nav-burger span,.nav-burger::before,.nav-burger::after,.dropdown,.nav-acc-toggle .chev{transition:none}
   }
 </style>
 <script defer src="https://tracking.deltarank.de/script.js" data-website-id="f7f173f4-d81d-4a7b-a026-e413d18dac06"></script>
@@ -249,11 +294,12 @@
 <header id="hdr">
   <div class="wrap nav">
     <a class="logo" href="/" aria-label="DI Fugentechnik Startseite"><img class="logo-img" src="/assets/logo.png" alt="DI Fugentechnik" width="46" height="46" /><span class="logo-txt">DI Fugentechnik</span></a>
-    <nav class="nav-links" id="navlinks" aria-label="Hauptnavigation"><a href="/ueber-uns/">Über uns</a><div class="has-dropdown"><a href="/leistungen/">Leistungen</a><div class="dropdown"><a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a><a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a><a href="/leistungen/naturstein-granit-versiegelung/">Naturstein &amp; Versiegelung</a><a href="/leistungen/abdichtung-dusche-bad-kueche/">Abdichtung Bad &amp; Küche</a><a href="/leistungen/balkon-terrassenfugen/">Balkon, Terrasse &amp; Pool</a><a href="/leistungen/gewerbe-spezialfugen/">Gewerbe- &amp; Spezialfugen</a></div></div><a href="/referenzen/">Referenzen</a><a href="/kontakt/">Kontakt</a></nav>
+    <nav class="nav-links" id="navlinks" aria-label="Hauptnavigation"><div class="nav-drawer-head"><button type="button" class="nav-close" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><a href="/ueber-uns/">Über uns</a><div class="has-dropdown"><button type="button" class="nav-acc-toggle" aria-expanded="false" aria-controls="leistungen-sub">Leistungen<span class="chev" aria-hidden="true">▾</span></button><a href="/leistungen/">Leistungen</a><div class="dropdown" id="leistungen-sub"><a href="/leistungen/silikonfugen-sanitaerfugen/">Silikon- &amp; Sanitärfugen</a><a href="/leistungen/fugensanierung-schimmelentfernung/">Fugensanierung &amp; Schimmel</a><a href="/leistungen/elastische-fugen-pu-dehnungsfugen/">Elastische &amp; PU-Fugen</a><a href="/leistungen/naturstein-granit-versiegelung/">Naturstein &amp; Versiegelung</a><a href="/leistungen/abdichtung-dusche-bad-kueche/">Abdichtung Bad &amp; Küche</a><a href="/leistungen/balkon-terrassenfugen/">Balkon, Terrasse &amp; Pool</a><a href="/leistungen/gewerbe-spezialfugen/">Gewerbe- &amp; Spezialfugen</a></div></div><a href="/referenzen/">Referenzen</a><a href="/kontakt/">Kontakt</a><div class="nav-drawer-foot"><a class="btn btn-primary" href="/kontakt/">Angebot anfragen</a><a class="nav-drawer-tel" href="tel:+491629397703">0162 93 97703</a></div></nav>
     <div class="nav-actions">
       <a class="btn btn-primary" href="/kontakt/">Angebot anfragen</a>
       <button type="button" class="nav-burger" id="navtoggle" aria-controls="navlinks" aria-expanded="false" aria-label="Menü öffnen"><span></span></button>
     </div>
+    <div class="nav-backdrop" aria-hidden="true"></div>
   </div>
 </header>
 
@@ -404,16 +450,7 @@
   const onScroll=()=>h.classList.toggle('scrolled',window.scrollY>10);
   onScroll();addEventListener('scroll',onScroll,{passive:true});
 
-  /* Mobiles Menü (zugänglicher Button mit aria-expanded) */
-  (function(){
-    const burger=document.getElementById('navtoggle');
-    const links=document.getElementById('navlinks');
-    if(!burger||!links) return;
-    const setMenu=open=>{ links.classList.toggle('is-open',open); burger.setAttribute('aria-expanded',open?'true':'false'); };
-    burger.addEventListener('click',()=>setMenu(!links.classList.contains('is-open')));
-    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
-  })();
+  /* Mobiles Drawer-Menü: gemeinsame Logik in /assets/nav.js (am Seitenende eingebunden) */
 
   /* Hero-Foto-Bühne: automatischer Crossfade + Pause-Steuerung */
   (function(){
@@ -453,5 +490,6 @@
     start();
   })();
 </script>
+<script defer src="/assets/nav.js"></script>
 </body>
 </html>
