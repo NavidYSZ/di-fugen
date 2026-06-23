@@ -66,6 +66,7 @@
         <div class="quote-box">
           <h2>Anfrage senden</h2>
           <p>Beschreiben Sie kurz Ihr Anliegen. Wir melden uns mit einer ersten Einschätzung.</p>
+          <p id="form-error" role="alert" style="display:none;margin:0 0 18px;padding:12px 16px;border-radius:12px;background:#fdecea;border:1px solid #f3c2bd;color:#8a1c12;font-weight:500">Ihre Anfrage konnte gerade nicht übermittelt werden. Bitte versuchen Sie es noch einmal oder rufen Sie uns direkt an: <a href="tel:+491629397703" style="color:inherit;font-weight:700">0162 93 97703</a>.</p>
           <form action="/kontakt/senden.php" method="POST">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
             <div class="form-row">
@@ -86,8 +87,9 @@
               <textarea name="Nachricht" placeholder="Kurze Beschreibung, z. B. Bad, Dusche oder Küche" aria-label="Beschreibung"></textarea>
             </div>
             <button class="btn" type="submit">Anfrage abschicken</button>
-            <p class="form-note">Ihre Anfrage wird direkt an uns gesendet – Ihr E-Mail-Programm öffnet sich nicht. Mit dem Absenden stimmen Sie der Verarbeitung gemäß <a href="/datenschutz/">Datenschutzerklärung</a> zu. Lieber direkt? Telefon 0162 93 97703.</p>
+            <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben gemäß unserer <a href="/datenschutz/">Datenschutzerklärung</a> zu. Sie möchten lieber direkt sprechen? Rufen Sie uns an unter 0162 93 97703.</p>
           </form>
+          <script>if(location.search.indexOf('fehler=1')>-1){var fe=document.getElementById('form-error');if(fe){fe.style.display='block';fe.scrollIntoView({behavior:'smooth',block:'center'});}}</script>
         </div>
       </div>
     </section>
