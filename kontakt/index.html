@@ -66,10 +66,16 @@
         <div class="quote-box">
           <h2>Anfrage senden</h2>
           <p>Beschreiben Sie kurz Ihr Anliegen. Wir melden uns mit einer ersten Einschätzung.</p>
-          <form action="mailto:di.fugen@gmx.de" method="get" enctype="text/plain">
+          <form action="https://formsubmit.co/di.fugen@gmx.de" method="POST">
+            <input type="hidden" name="_subject" value="Neue Anfrage über di-fugen.de" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://di-fugen.de/kontakt/danke/" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
             <div class="form-row">
               <input type="text" name="Name" placeholder="Ihr Name" aria-label="Ihr Name" required />
               <input type="tel" name="Telefon" placeholder="Telefonnummer" aria-label="Telefonnummer" required />
+              <input type="email" name="email" placeholder="E-Mail (für Rückmeldung, optional)" aria-label="E-Mail-Adresse" />
               <select name="Leistung" aria-label="Leistung auswählen">
                 <option value="" disabled selected>Welche Leistung benötigen Sie?</option>
                 <option>Silikon- &amp; Sanitärfugen</option>
@@ -77,13 +83,14 @@
                 <option>PU- &amp; Dehnungsfugen</option>
                 <option>Naturstein &amp; Granit</option>
                 <option>Abdichtung &amp; Versiegelung</option>
+                <option>Balkon, Terrasse &amp; Pool</option>
                 <option>Schwimmbad &amp; Gewerbe</option>
                 <option>Sonstiges / Beratung</option>
               </select>
               <textarea name="Nachricht" placeholder="Kurze Beschreibung, z. B. Bad, Dusche oder Küche" aria-label="Beschreibung"></textarea>
             </div>
             <button class="btn" type="submit">Anfrage abschicken</button>
-            <p class="form-note">Hinweis: Über „Anfrage abschicken“ öffnet sich Ihr E-Mail-Programm mit den eingegebenen Angaben. Alternativ erreichen Sie uns direkt unter 0162 93 97703.</p>
+            <p class="form-note">Ihre Anfrage wird direkt an uns gesendet – Ihr E-Mail-Programm öffnet sich nicht. Mit dem Absenden stimmen Sie der Verarbeitung gemäß <a href="/datenschutz/">Datenschutzerklärung</a> zu. Lieber direkt? Telefon 0162 93 97703.</p>
           </form>
         </div>
       </div>
