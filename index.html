@@ -64,6 +64,8 @@
   .has-dropdown{position:relative}
   .has-dropdown>a::after{content:" ▾";font-size:.8em;color:var(--muted)}
   .dropdown{display:none;position:absolute;top:100%;left:0;min-width:248px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;margin-top:10px}
+  /* unsichtbare Brücke über den Abstand, damit der Hover beim Runterziehen zur Auswahl nicht abreißt */
+  .dropdown::before{content:"";position:absolute;top:-18px;left:0;right:0;height:18px}
   .has-dropdown:hover .dropdown,.has-dropdown:focus-within .dropdown{display:block}
   .dropdown a{display:block;padding:10px 14px;border-radius:9px;font-weight:600;color:#3b424b;white-space:nowrap}
   .dropdown a:hover{background:var(--surface);color:var(--accent-text)}
